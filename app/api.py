@@ -16,7 +16,7 @@ api.install(SmartFiltersPlugin())
 
 @api.get('/news')
 def news_api():
-    """Retrieve latest news.
+    """Retrieve latest news API endpoint.
     """
     feed_size = bottle.request.query.smart_filters().get('size') or 5
 
@@ -29,3 +29,13 @@ def news_api():
     ]
 
     return WSResponse.ok(news)
+
+
+@api.get('/search')
+def search_api():
+    """Search API endpoint.
+    """
+
+    search_term = bottle.request.query.smart_filters().get('term')
+
+    return WSResponse.ok({'keyword': search_term})
