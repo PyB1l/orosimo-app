@@ -1,0 +1,15 @@
+bottle
+cython
+cffi
+bottle-smart-filters
+-e git+https://github.com/agile4you/pgtools.git#egg=pgtools
+bottle-neck
+click
+SchemaFactory
+psycopg2
+gevent
+pytest
+pytest-cov
+coveralls
+Sphinx
+sqlalchemy
