@@ -88,3 +88,11 @@
     </nav>
     <!-- End blog pagination -->
 {% endblock %}
+
+
+{% block extra_js %}
+<script src="/static/components/news.js"></script>
+<script>
+    var newsfeed = riot.mount('news');
+</script>
+{% endblock %}
