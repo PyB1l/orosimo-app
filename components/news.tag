@@ -6,7 +6,8 @@
             <div class="media" each={ newslist }>
                 <div class="media-left">
                     <a href="/news/{ uid }">
-                        <img class="media-object" src="{ icon }" alt="img">
+                        <i class="fa fa-rss-square wc-icon" style='font-size: 6em; color: #ee4532'></i>
+
                     </a>
                 </div>
                 <div class="media-body">
@@ -18,7 +19,7 @@
     </div>
 
     this.newslist = []
-    this.api = '/api/news?size=5'
+    this.api = '/api/news?size=3'
 
     var self = this
 

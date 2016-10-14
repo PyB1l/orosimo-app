@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Rex : Blog Archive</title>
+    <title>{% block title %}Ορόσημο{% endblock %}</title>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/icon" href="/static/images/favicon.ico"/>
     <!-- Font Awesome -->
@@ -37,6 +37,11 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
+        @font-face {
+            font-family: PFAgoraMedium !important;
+            src: url(/static/fonts/PFAgoraSlabPro-Medium.ttf);
+        }
+
         {% block extra_css %}
         {% endblock %}
     </style>
@@ -58,8 +63,8 @@
                     <div class="blog-banner-area">
                         <h2><span>ΟΡΟΣΗΜΟ</span> </h2>
                         <ol class="breadcrumb">
-                            <li><a href="/">Σπουδές</a></li>
-                            <li class="active">Χειμερινή περίοδος</li>
+                            <li><a href="/">ΑΡΧΙΚΗ</a></li>
+                            <li class="active">{{ page_breadcrumb }}</li>
                         </ol>
                     </div>
                 </div>

@@ -1,5 +1,9 @@
 {% extends 'page_base.html' %}
 
+{% block title %}
+{{ super() }} - Σπουδές
+{% endblock %}
+
 
 {% block sidebar %}
 {% include 'widgets/sidebar.html' %}
@@ -86,7 +90,10 @@
             </li>
         </ul>
     </nav>
+
     <!-- End blog pagination -->
+
+
 {% endblock %}
 
 

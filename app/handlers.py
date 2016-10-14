@@ -15,4 +15,9 @@ def index_handler():
 
 @bottle.jinja2_view('pages/studies.html')
 def list_handler():
-    return {}
+    return {'page_breadcrumb': u'ΟΔΗΓΟΣ ΣΠΟΥΔΩΝ'}
+
+
+@bottle.jinja2_view('pages/register.html')
+def register_handler():
+    return {'page_breadcrumb': u'ΕΓΓΡΑΦΗ'}

@@ -1,0 +1,31 @@
+{% extends 'page_base.html' %}
+
+{% block title %}
+{{ super() }} - Eγγραφή
+{% endblock %}
+
+
+{% block sidebar %}
+{% include 'widgets/sidebar.html' %}
+{% endblock %}
+
+
+
+{% block footer %}
+{% include 'widgets/footer.html' %}
+{% endblock %}
+
+
+{% block topnav %}
+{% include 'widgets/topnav.html' %}
+{% endblock %}
+
+
+{% block extra_js %}
+<script src="/static/components/news.js"></script>
+<script src="/static/components/search.js"></script>
+<script>
+    var newsfeed = riot.mount('news');
+    var search = riot.mount('search');
+</script>
+{% endblock %}
