@@ -5,7 +5,7 @@
         <div class="popular-post-widget">
             <div class="media" each={ newslist }>
                 <div class="media-left">
-                    <a href="/news/{ uid }">
+                    <a href="/news/{ id }">
                         <i class="fa fa-rss-square wc-icon" style='font-size: 6em; color: #ee4532'></i>
 
                     </a>
