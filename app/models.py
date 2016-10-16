@@ -1,5 +1,12 @@
+# -*- coding: utf-8 -*-
+"""`app.models` package.
+
+Contains the external services for handling external functionality.
+"""
+
 from pgtools import DBPoolEngine, DBAPIBackend, ViewField, DBAPIError
 from pgtools.engine import EngineError
+
 
 engine = DBPoolEngine(
     pool_size=20,
