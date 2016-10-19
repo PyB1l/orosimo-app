@@ -13,11 +13,11 @@ def index_handler():
     return {}
 
 
-@bottle.jinja2_view('pages/studies.html')
+@bottle.jinja2_view('app/studies.html')
 def list_handler():
     return {'page_breadcrumb': u'ΟΔΗΓΟΣ ΣΠΟΥΔΩΝ'}
 
 
-@bottle.jinja2_view('pages/register.html')
+@bottle.jinja2_view('app/register.html')
 def register_handler():
     return {'page_breadcrumb': u'ΕΓΓΡΑΦΗ'}

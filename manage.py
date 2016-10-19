@@ -48,9 +48,12 @@ def build():
     """Compile Web components in plain javascript.
     """
     subprocess.Popen(
-        ["riot", "components", "static/components"]
+        ["riot", "components/app", "static/app/components"]
     )
 
+    subprocess.Popen(
+        ["riot", "components/admin", "static/admin/components"]
+    )
 
 if __name__ == '__main__':
 

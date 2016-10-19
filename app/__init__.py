@@ -6,16 +6,20 @@ Contains the Application wsgi callable.
 
 __all__ = ('wsgi', )
 
-from app.handlers import index_handler, list_handler, register_handler
-from app.api import api
 import functools
+
 import bottle
 from bottle.ext.neck import StripPathMiddleware
 
+#  import mount
+from api import api
+from admin import wsgi as admin_wsgi
+
+from app.handlers import index_handler, list_handler, register_handler
 
 wsgi = StripPathMiddleware(bottle.Bottle())
 
-
+wsgi.mount('/admin', admin_wsgi)
 wsgi.mount('/api', api)
 
 wsgi.get('/')(index_handler)
