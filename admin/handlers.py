@@ -25,9 +25,8 @@ def logout():
 def login():
     """Base login functionality.
     """
-    if request.method == 'POST':
 
-        print('POST detected')
+    if request.method == 'POST':
 
         username = request.forms.get('username') or ''
         password = request.forms.get('password') or ''

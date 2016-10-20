@@ -4354,8 +4354,8 @@ wysihtml5.browser = (function() {
      * In particular, Opera needs a reference to a document that has a contentEditable in it's dom tree
      * in oder to report correct results
      *
-     * @param {Object} doc Document object on which to check for a query command
-     * @param {String} command The query command to check for
+     * @param {Object} doc Document object on which to check for a db command
+     * @param {String} command The db command to check for
      * @return {Boolean}
      *
      * @example
@@ -8212,7 +8212,7 @@ wysihtml5.dom.isLoadedImage = function (node) {
 
 
 })(wysihtml5);
-;// does a selector query on element or array of elements
+;// does a selector db on element or array of elements
 
 wysihtml5.dom.query = function(elements, query) {
     var ret = [],
@@ -10668,7 +10668,7 @@ wysihtml5.Commands = Base.extend(
   }
 
   /**
-   * Execute native query command
+   * Execute native db command
    * and if necessary modify the inserted node's className
    */
   function _execCommand(doc, composer, command, nodeName, className) {
@@ -12693,7 +12693,7 @@ wysihtml5.views.View = Base.extend(
   var dom       = wysihtml5.dom,
       browser   = wysihtml5.browser,
       /**
-       * Map keyCodes to query commands
+       * Map keyCodes to db commands
        */
       shortcuts = {
         "66": "bold",     // B
