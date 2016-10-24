@@ -61,6 +61,12 @@ def login_required(callback):
 
 
 @login_required
-@jinja2_view('admin/blank.html')
+@jinja2_view('admin/pages/index.html')
 def index():
+    return {}
+
+
+@login_required
+@jinja2_view('admin/pages/post.html')
+def post():
     return {}

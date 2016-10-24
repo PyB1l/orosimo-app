@@ -14,8 +14,10 @@ class PostModel(object):
     query = query_builder(folder='db', query_file='post.sql', namespace=__file__)
     engine = DBEngine.make(**POSTGRES)
 
+    fields = ('id', 'title', 'body', 'img', 'posted_at')
+
     @classmethod
-    def get_latest(cls, limit):
+    def get_latest(cls, limit, *fields):
         """
         """
         try:
@@ -25,10 +27,10 @@ class PostModel(object):
         except (DBAPIError, SnaqlException) as error:
             raise Exception(error.args[0])
 
-        return [cls.serialize(record) for record in records]
+        return [cls.serialize(record, *fields) for record in records]
 
     @classmethod
-    def get(cls, uid):
+    def get(cls, uid, *fields):
         try:
             qs = cls.query.get(uid=uid)
             record = cls.engine.query(qs, fetch_opts='single')
@@ -36,20 +38,20 @@ class PostModel(object):
         except (DBAPIError, SnaqlException) as error:
             raise Exception(error.args[0])
 
-        return cls.serialize(record) if record else None
+        return cls.serialize(record, *fields) if record else None
 
     @classmethod
-    def all(cls, limit=None, offset=None):
+    def all(cls, limit=None, offset=None, *fields):
         try:
             qs = cls.query.all(limit=limit, offset=offset)
             records = cls.engine.query(qs, fetch_opts='many')
         except (DBAPIError, SnaqlException) as error:
             raise Exception(error.args[0])
 
-        return [cls.serialize(record) for record in records]
+        return [cls.serialize(record, *fields) for record in records]
 
-    @staticmethod
-    def serialize(model):
+    @classmethod
+    def serialize(cls, model, *fields):
         """Serialize to json a
         Args:
             model:
@@ -57,5 +59,8 @@ class PostModel(object):
         Returns:
             A dict with serialized data.
         """
-        return {"id": model.get('id'), "title": model.get('title'), "body": model.get('body'),
-                "img": model.get('img'), "posted": model.get('posted_at').strftime(format='%Y:%m:%d %H:%M:%S')}
+
+        if fieds:
+            return {field: model.get(field) for field in fields}
+
+        return {field: model.get(field) for field in cls.fields}
