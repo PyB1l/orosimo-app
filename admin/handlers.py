@@ -40,7 +40,7 @@ def login():
             'oro_admin',
             secret=server_secret,
             expires=time.time() + (3600 * 24 * 365),
-            domain='pav-pc',
+            domain=SERVER_HOST,
             path='/'
         )
 
@@ -55,6 +55,7 @@ def login_required(callback):
     @wraps(callback)
     def _wrapped(*args, **kwargs):
         if request.get_cookie('__utmb', secret=server_secret):
+            print(request.get_cookie('__utmb', secret=server_secret))
             return callback(*args, **kwargs)
         redirect('/admin/login')
 
