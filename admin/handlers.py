@@ -1,6 +1,7 @@
 from bottle import jinja2_view, jinja2_template, request, redirect, response
 from functools import wraps
 import time
+from settings import SERVER_HOST
 
 server_secret = '@^$^&#^QWERTY'
 
@@ -15,7 +16,7 @@ def logout():
         '',
         secret=server_secret,
         expires=time.time() - (3600 * 24 * 365),
-        domain='pav-pc',
+        domain=SERVER_HOST,
         path='/'
     )
 

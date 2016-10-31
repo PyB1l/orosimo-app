@@ -7,7 +7,10 @@ Provides basic configuration variables for app.
 from pgtools import DBPoolEngine
 from snaql.factory import Snaql
 from os import path
+from os import environ
 
+
+SERVER_HOST = environ.get('APP_HOST') or 'pav-pc'
 
 POSTGRES = {
     'pool_size': 10,
@@ -23,7 +26,7 @@ POSTGRES = {
 
 SERVER_OPTS = {
     'host': '0.0.0.0',
-    'port': 8081,
+    'port': int(environ.get('APP_PORT') or 8081),
     'server': 'cherrypy',
     'reloader': True
 }

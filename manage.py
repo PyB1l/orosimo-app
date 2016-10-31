@@ -8,6 +8,7 @@ import app
 import bottle
 import click
 import subprocess
+from settings import SERVER_OPTS
 
 
 @click.group()
@@ -16,9 +17,9 @@ def manager():
 
 
 @manager.command()
-@click.option('--host', default='0.0.0.0', type=str, help='Set Application server host.')
-@click.option('--port', default='8081', type=int, help='Set Application server port.')
-@click.option('--server', default='cherrypy', type=str, help='Set Application server wsgi container.')
+@click.option('--host', default=SERVER_OPTS['host'], type=str, help='Set Application server host.')
+@click.option('--port', default=SERVER_OPTS['port'], type=int, help='Set Application server port.')
+@click.option('--server', default=SERVER_OPTS['server'], type=str, help='Set Application server wsgi container.')
 @click.option('--reloader', default=True, type=bool, help='Set Application server host reloader option.')
 @click.option('--debug', default=True, type=bool, help='Set Application server host debug mode.')
 def run(host, port, server, reloader, debug):
