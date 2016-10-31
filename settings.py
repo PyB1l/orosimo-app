@@ -13,6 +13,7 @@ from os import environ
 SERVER_HOST = environ.get('APP_HOST') or 'pav-pc'
 
 print('SERVER-HOST: {}'.format(SERVER_HOST))
+print('SERVER-HOST_ENV: {}'.format(environ.get('APP_HOST')))
 
 POSTGRES = {
     'pool_size': 10,
