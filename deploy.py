@@ -4,7 +4,7 @@ import settings
 
 app_container = bottle.Bottle()
 
-app_container.mount('beta-version', app)
+app_container.mount('/beta-version', app)
 
 if __name__ == '__main__':
 
