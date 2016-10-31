@@ -10,7 +10,7 @@ from os import path
 from os import environ
 
 
-SERVER_HOST = environ.get('APP_HOST') or 'pav-pc'
+SERVER_HOST = environ.get('APP_HOST') or '83ebd83d-2f2e-43e0-9e07-78a6ff7af821.pub.cloud.scaleway.com'
 
 print('SERVER-HOST: {}'.format(SERVER_HOST))
 print('SERVER-HOST_ENV: {}'.format(environ.get('APP_HOST')))
