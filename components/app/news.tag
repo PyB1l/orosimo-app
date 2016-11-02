@@ -19,13 +19,16 @@
     </div>
 
     this.newslist = []
-    this.api = '/api/news?size=3'
+    this.api = '/admin/api/post/get_latest/3'
 
     var self = this
 
     this.on("mount", function() {
         $.getJSON(self.api).done(function(resp) {
             self.newslist = resp.data
+            self.newslist.forEach(function (post) {
+                post.body = post.body.slice(0, 60) + ' ...'
+            })
             self.update()
           })
     })

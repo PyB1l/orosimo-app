@@ -1,0 +1,39 @@
+{% extends 'page_base.html' %}
+
+{% block title %}
+{{ super() }} - Σπουδές
+{% endblock %}
+
+
+{% block sidebar %}
+{% include 'widgets/sidebar.html' %}
+{% endblock %}
+
+
+
+{% block footer %}
+{% include 'widgets/footer.html' %}
+{% endblock %}
+
+
+{% block topnav %}
+{% include 'widgets/topnav.html' %}
+{% endblock %}
+
+
+{% block content %}
+<success></success>
+
+{% endblock %}
+
+
+{% block extra_js %}
+<script src="/static/app/components/news.js"></script>
+<script src="/static/app/components/search.js"></script>
+<script src="/static/app/components/success.js"></script>
+<script>
+    var newsfeed = riot.mount('news');
+    var search = riot.mount('search');
+    var success = riot.mount('success');
+</script>
+{% endblock %}

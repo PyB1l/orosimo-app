@@ -47,3 +47,8 @@ def admin_backend(action, fetch_opts='many', **params):
         raise ModelError(error.args[0])
 
     return records
+
+
+if __name__ == '__main__':
+
+    print(admin_backend('get_latest'))

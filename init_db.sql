@@ -23,3 +23,20 @@ CREATE table admin.exercise (
 create unique index on admin.exercise (id);
 create index on admin.exercise (category);
 create index on admin.exercise (uploaded_at);
+
+
+
+CREATE TABLE admin.success (
+    id serial not null primary key,
+    full_name text not null,
+    school_year int not null,
+    university text not null,
+    promoted boolean default false
+
+)
+
+;
+create unique index on admin.success (id);
+create index on admin.success (school_year);
+create index on admin.success (full_name);
+create index on admin.success (promoted) where (promoted = true);

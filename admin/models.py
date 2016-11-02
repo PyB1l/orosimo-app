@@ -6,10 +6,68 @@ from snaql.factory import Snaql, SnaqlException
 from pgtools import DBAPIError
 from settings import DBEngine, POSTGRES, query_builder
 from os import path
+import datetime
+
+
+class SuccessModel(object):
+    """Admin Success Model class.
+    """
+    query = query_builder(folder='db', query_file='success.sql', namespace=__file__)
+    engine = DBEngine.make(**POSTGRES)
+
+    @classmethod
+    def available_years(cls):
+        try:
+            qs = cls.query.available_years()
+            records = cls.engine.query(qs, fetch_opts='many')
+
+        except (DBAPIError, SnaqlException) as error:
+            raise Exception(error.args[0])
+
+        return records
+
+    @classmethod
+    def all(cls):
+        years = [record['school_year'] for record in cls.available_years()]
+
+        total_success = dict()
+
+        for year in years:
+            total_success[year] = cls.get_year(year=year)
+
+        return total_success
+
+    @classmethod
+    def get_year(cls, year):
+        """Get year success models.
+        """
+        try:
+            qs = cls.query.get_year(year=year)
+            records = cls.engine.query(qs, fetch_opts='many')
+
+        except (DBAPIError, SnaqlException) as error:
+            raise Exception(error.args[0])
+
+        return records
+
+    @classmethod
+    def get_promoted(cls):
+        """Get year success models.
+        """
+        current_year = datetime.datetime.now().year
+
+        try:
+            qs = cls.query.get_promoted(year=current_year)
+            records = cls.engine.query(qs, fetch_opts='many')
+
+        except (DBAPIError, SnaqlException) as error:
+            raise Exception(error.args[0])
+
+        return records
 
 
 class PostModel(object):
-    """Base post model class.
+    """Admin Post model class.
     """
     query = query_builder(folder='db', query_file='post.sql', namespace=__file__)
     engine = DBEngine.make(**POSTGRES)
@@ -60,7 +118,13 @@ class PostModel(object):
             A dict with serialized data.
         """
 
-        if fieds:
-            return {field: model.get(field) for field in fields}
+        if fields:
+            raw_model = {field: model.get(field) for field in fields}
 
-        return {field: model.get(field) for field in cls.fields}
+        else:
+            raw_model = {field: model.get(field) for field in cls.fields}
+
+        if 'posted_at' in raw_model:
+            raw_model['posted_at'] = str(raw_model['posted_at'])
+
+        return raw_model
