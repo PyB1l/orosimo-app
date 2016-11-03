@@ -67,7 +67,7 @@ SELECT
   img,
   posted_at,
   likes,
-  (select count(*) from admin.post_comment)::int total_comments
+  (select count(a.*) from admin.post_comment a where a.post_id = admin.post.id)::int total_comments
 
 FROM admin.post
   ORDER by posted_at DESC
