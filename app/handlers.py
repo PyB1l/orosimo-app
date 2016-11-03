@@ -54,4 +54,4 @@ def post_list():
 
     current_page = page
 
-    return {'page_breadcrumb': u'Νεα', 'posts': posts, 'pagination': pagination, 'page': current_page}
+    return {'page_breadcrumb': u'ΝEA', 'posts': posts, 'pagination': pagination, 'page': current_page}

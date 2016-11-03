@@ -5,13 +5,13 @@
         <div class="popular-post-widget">
             <div class="media" each={ newslist }>
                 <div class="media-left">
-                    <a href="/news/{ id }">
+                    <a href="/posts/{ id }">
                         <i class="fa fa-rss-square wc-icon" style='font-size: 6em; color: #ee4532'></i>
 
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading"><a href="blog-single.html">{ title }</a></h4>
+                    <h4 class="media-heading"><a href="/posts/{ id }">{ title }</a></h4>
                     <p>{ body }</p>
                 </div>
             </div>
@@ -30,6 +30,7 @@
                 post.body = post.body.slice(0, 60) + ' ...'
             })
             self.update()
+            console.dir(self.newslist)
           })
     })
 

@@ -19,7 +19,6 @@ from app.handlers import index_handler, list_handler, register_handler, success_
 
 wsgi = StripPathMiddleware(bottle.Bottle())
 
-
 wsgi.mount('/admin', admin_wsgi)
 wsgi.mount('/api', api)
 
