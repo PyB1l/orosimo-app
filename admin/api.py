@@ -67,6 +67,24 @@ class PostsAPIHandler(BaseHandler):
 
         return WSResponse.ok(data=post)
 
+    @route_method('POST', extra_part=True)
+    def like(self, uid):
+        """Add like to Post model.
+        """
+
+        model = self.model.add_like(uid)
+        return WSResponse.ok(data=model)
+
+    @route_method('POST', extra_part=True)
+    def comment(self, uid):
+        """Add like to Post model.
+        """
+
+        comment_data = self.request.json
+
+        model = self.model.add_comment(uid=uid, **comment_data)
+        return WSResponse.ok(data=model)
+
     @route_method('GET', extra_part=False)
     def list(self):
         """Retrieve all Posts.

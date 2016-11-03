@@ -72,7 +72,7 @@ class PostModel(object):
     query = query_builder(folder='db', query_file='post.sql', namespace=__file__)
     engine = DBEngine.make(**POSTGRES)
 
-    fields = ('id', 'title', 'body', 'img', 'posted_at')
+    fields = ('id', 'title', 'body', 'img', 'posted_at', 'likes', 'total_comments')
 
     @classmethod
     def get_latest(cls, limit, *fields):
@@ -99,6 +99,33 @@ class PostModel(object):
         return cls.serialize(record, *fields) if record else None
 
     @classmethod
+    def add_like(cls, uid):
+        """Add Like to post
+        """
+        try:
+            qs = cls.query.add_like(uid=uid)
+            record = cls.engine.query(qs, fetch_opts='single')
+
+        except (DBAPIError, SnaqlException) as error:
+            raise Exception(error.args[0])
+
+        return cls.serialize(record) if record else None
+
+    @classmethod
+    def add_comment(cls, uid, person, email, body):
+        """Add Comment to post.
+        """
+
+        try:
+            qs = cls.query.add_comment(uid=uid, person=person, email=email, body=body)
+            record = cls.engine.query(qs, fetch_opts='single')
+
+        except (DBAPIError, SnaqlException) as error:
+            raise Exception(error.args[0])
+
+        return record if record else None
+
+    @classmethod
     def all(cls, limit=None, offset=None, *fields):
         try:
             qs = cls.query.all(limit=limit, offset=offset)
@@ -107,6 +134,16 @@ class PostModel(object):
             raise Exception(error.args[0])
 
         return [cls.serialize(record, *fields) for record in records]
+
+    @classmethod
+    def count(cls):
+        try:
+            qs = cls.query.count()
+            total = cls.engine.query(qs, fetch_opts='single')
+        except (DBAPIError, SnaqlException) as error:
+            raise Exception(error.args[0])
+
+        return total['total']
 
     @classmethod
     def serialize(cls, model, *fields):
@@ -125,6 +162,6 @@ class PostModel(object):
             raw_model = {field: model.get(field) for field in cls.fields}
 
         if 'posted_at' in raw_model:
-            raw_model['posted_at'] = str(raw_model['posted_at'])
+            raw_model['posted_at'] = str(raw_model['posted_at']).split('.')[0]
 
         return raw_model

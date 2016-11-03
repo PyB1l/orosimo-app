@@ -1,0 +1,83 @@
+{% extends 'page_base.html' %}
+
+{% block title %}
+{{ super() }} - Νέα
+{% endblock %}
+
+
+{% block sidebar %}
+{% include 'widgets/sidebar.html' %}
+{% endblock %}
+
+
+
+{% block footer %}
+{% include 'widgets/footer.html' %}
+{% endblock %}
+
+
+{% block topnav %}
+{% include 'widgets/topnav.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+    {% for post in posts %}
+
+    <article class="single-from-blog">
+        <figure>
+            <a href="/posts/{{ post.id }}"><img alt="img" src="{{ post.img }}"></a>
+        </figure>
+        <div class="blog-title">
+            <h2><a href="/posts/{{ post.id }}">{{ post.title }}</a></h2>
+            <p>Posted by <a href="#" class="blog-admin">διαχείρηση ΟΡΟΣΗΜΟ</a> on <span class="blog-date">{{ post.posted_at }}</span></p>
+        </div>
+        <p></p>
+        <div class="blog-footer">
+            <a href="#"><span class="fa fa-comment"></span>18 Comments</a>
+            <a href="#"><span class="fa fa-thumbs-o-up"></span>35 Likes</a>
+        </div>
+    </article>
+
+    {% endfor %}
+
+    {% if pagination|length > 1 %}
+    <!--Start Blog pagination -->
+    <nav>
+        <ul class="pagination blog-pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% for p in pagination %}
+                <li><a href="{{ p.page }}"  {% if p.index == page %}class="active"{% endif %}>{{ p.index }}</a></li>
+            {% endfor %}
+            <!--<li><a href="#">2</a></li>-->
+            <!--<li><a href="#">3</a></li>-->
+            <!--<li><a href="#">4</a></li>-->
+            <!--<li><a href="#">5</a></li>-->
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    {% endif %}
+
+    <!-- End blog pagination -->
+
+
+{% endblock %}
+
+
+{% block extra_js %}
+<script src="/static/app/components/news.js"></script>
+<script src="/static/app/components/search.js"></script>
+<script>
+    var newsfeed = riot.mount('news');
+    var search = riot.mount('search');
+</script>
+{% endblock %}

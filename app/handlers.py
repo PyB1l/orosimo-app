@@ -6,6 +6,7 @@ Contains the Application web handlers.
 
 
 import bottle
+import math
 from admin.models import PostModel, SuccessModel
 
 
@@ -29,3 +30,28 @@ def register_handler():
 def success_handler():
     success_data = SuccessModel.all()
     return {'page_breadcrumb': u'ΕΠΙΤΥΧΙΕΣ', 'success_data': success_data}
+
+
+@bottle.jinja2_view('app/post_single.html')
+def post_retrieve(uid):
+    """Retrieve a blog post.
+    """
+    post = PostModel.get(uid=uid)
+    return {'page_breadcrumb': u'NEA', 'post': post}
+
+
+@bottle.jinja2_view('app/post_list.html')
+def post_list():
+    """Default pagination is 3.
+    """
+    page = bottle.request.query.get('page', type=int) or 1
+
+    posts = PostModel.all(limit=3, offset=3*(page - 1))
+
+    total_pages = int(math.ceil(PostModel.count() / 3))
+
+    pagination = [{'page': '/posts?page={}'.format(index), "index": index} for index in range(1, total_pages-1)]
+
+    current_page = page
+
+    return {'page_breadcrumb': u'Νεα', 'posts': posts, 'pagination': pagination, 'page': current_page}

@@ -9,11 +9,19 @@ SELECT
   title,
   body,
   img,
-  posted_at
+  posted_at,
+  likes,
+  (select count(*) from admin.post_comment)::int total_comments
 
 FROM admin.post
   WHERE id = {{ uid }}
 
+{% endsql %}
+
+{% sql 'count', note='Count total Posts' %}
+SELECT
+  count(id) total
+FROM admin.post
 {% endsql %}
 
 
@@ -24,9 +32,11 @@ SELECT
   title,
   body,
   img,
-  posted_at
+  posted_at,
+  likes,
+  (select count(*) from admin.post_comment)::int total_comments
 
-FROM admin.post
+FROM admin.post ORDER BY posted_at DESC
 
 {% if offset %}
 OFFSET {{ offset|guards.integer }}
@@ -55,7 +65,9 @@ SELECT
   title,
   body,
   img,
-  posted_at
+  posted_at,
+  likes,
+  (select count(*) from admin.post_comment)::int total_comments
 
 FROM admin.post
   ORDER by posted_at DESC
@@ -63,4 +75,19 @@ LIMIT {{ limit }}
 
 {% endsql %}
 
+{% sql 'add_like', note='Add a Like to a post' %}
 
+  UPDATE admin.post SET likes = likes + 1 WHERE
+  id = {{ uid }}
+  returning *
+
+{% endsql %}
+
+
+{% sql 'add_comment', note='Add comment to a post' %}
+
+  INSERT INTO admin.post_comment (post_id, email, person, body) VALUES
+  ({{ uid }}, '{{ email }}', '{{ person }}', $${{ body }}$$)
+  returning *
+
+{% endsql %}

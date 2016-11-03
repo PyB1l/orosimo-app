@@ -1,15 +1,12 @@
 <success>
     <div class="blog-comment">
 
-
-        <div class="single-widget">
-            <h2 style="font-family: 'Roboto Condensed', sans-serif">Επιτυχίες ΟΡΟΣΗΜΟ</h2>
-            <hr />
             <blockquote style="font-family: 'Roboto Condensed', sans-serif">
-                Για περισσότερα από 25 χρόνια οι δικές σας επιτυχίες μας επιβραβεύουν στην πράξη.
-                    <br />
+                 Γιατί οι δικές σας επιτυχίες μασ επιβεβαιώνουν στην πράξη εδώ και 25 χρόνια!<br />
                 <cite style="font-family: 'Roboto Condensed', sans-serif"> - επιτελέιο ΟΡΟΣΗΜΟ</cite>
             </blockquote>
+
+            <div class="single-widget">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs">
 

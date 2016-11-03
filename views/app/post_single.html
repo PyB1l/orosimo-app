@@ -1,0 +1,57 @@
+{% extends 'page_base.html' %}
+
+{% block title %}
+{{ super() }} - Νέα
+{% endblock %}
+
+
+{% block sidebar %}
+{% include 'widgets/sidebar.html' %}
+{% endblock %}
+
+
+
+{% block footer %}
+{% include 'widgets/footer.html' %}
+{% endblock %}
+
+
+{% block topnav %}
+{% include 'widgets/topnav.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<!-- Start single blog post -->
+<article class="single-from-blog">
+    <div class="blog-title">
+        <h2>{{ post.title }}</h2>
+        <p>Posted by <a href="#" class="blog-admin">διαχείρηση ΟΡΟΣΗΜΟ</a> on <span class="blog-date">{{ post.posted_at }}</span></p>
+    </div>
+    <figure>
+        <a href="blog-single.html"><img alt="img" src="{{ post.img }}"></a>
+    </figure>
+    <div class="blog-details-content">
+        <p>{{ post.body }}</p>
+    </div>
+</article>
+
+
+<post></post>
+<!-- End single blog post -->
+
+
+{% endblock %}
+
+
+{% block extra_js %}
+<script src="/static/app/components/news.js"></script>
+<script src="/static/app/components/search.js"></script>
+<script src="/static/app/components/post.js"></script>
+<script>
+    var newsfeed = riot.mount('news');
+    var search = riot.mount('search');
+    var post = riot.mount('post', {post_id: {{ post.id }}});
+</script>
+{% endblock %}

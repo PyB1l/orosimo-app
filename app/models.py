@@ -10,6 +10,7 @@ from settings import DBEngine, POSTGRES
 
 
 engine = DBEngine.make(**POSTGRES)
+print('hi')
 
 
 class ModelError(Exception):
@@ -25,6 +26,7 @@ class AdminModel(DBAPIBackend):
     get_latest = ViewField()
 
     class Meta:
+
         schema = 'admin'
 
 

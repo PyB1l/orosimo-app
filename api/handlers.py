@@ -1,5 +1,6 @@
 from bottle.ext.neck import WSResponse
 import bottle
+from api.services import mail_service
 
 
 def news_api():
@@ -25,3 +26,14 @@ def search_api():
     search_term = bottle.request.query.smart_filters().get('term')
 
     return WSResponse.ok({'keyword': search_term})
+
+
+def register():
+    """Register new user.
+    """
+
+    mail_context = bottle.request.json
+
+    if mail_service('registration@oroshmo.gr', mail_context):
+        return WSResponse.ok(data={'Status': 'send'})
+    return WSResponse.service_unavailable(error=['Mail provider Error'])
