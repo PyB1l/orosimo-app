@@ -2,9 +2,11 @@
     <div class="blog-comment">
 
             <blockquote style="font-family: 'Roboto Condensed', sans-serif">
-                 Γιατί οι δικές σας επιτυχίες μασ επιβεβαιώνουν στην πράξη εδώ και 25 χρόνια!<br />
+                 <br />
                 <cite style="font-family: 'Roboto Condensed', sans-serif"> - επιτελέιο ΟΡΟΣΗΜΟ</cite>
             </blockquote>
+
+            <p class="navbar-text" style="font-family: 'Roboto Condensed', sans-serif">Γιατί οι δικές σας επιτυχίες μασ επιβεβαιώνουν στην πράξη εδώ και 25 χρόνια</p>
 
             <div class="single-widget">
             <!-- Nav tabs -->

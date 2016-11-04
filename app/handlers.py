@@ -37,6 +37,8 @@ def post_retrieve(uid):
     """Retrieve a blog post.
     """
     post = PostModel.get(uid=uid)
+    if not post:
+        bottle.abort(404)
     return {'page_breadcrumb': u'NEA', 'post': post}
 
 
@@ -55,3 +57,8 @@ def post_list():
     current_page = page
 
     return {'page_breadcrumb': u'ΝEA', 'posts': posts, 'pagination': pagination, 'page': current_page}
+
+
+@bottle.jinja2_view('404.html')
+def not_found(error):
+    return {}

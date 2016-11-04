@@ -15,12 +15,15 @@ from bottle.ext.neck import StripPathMiddleware
 from api import api
 from admin import wsgi as admin_wsgi
 
-from app.handlers import index_handler, list_handler, register_handler, success_handler, post_list, post_retrieve
+from app.handlers import (index_handler, list_handler, register_handler, success_handler,
+                          post_list, post_retrieve, not_found)
 
 wsgi = StripPathMiddleware(bottle.Bottle())
 
 wsgi.mount('/admin', admin_wsgi)
 wsgi.mount('/api', api)
+
+wsgi.error(404)(not_found)
 
 wsgi.get('/')(index_handler)
 wsgi.get('/studies')(list_handler)
