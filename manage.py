@@ -45,7 +45,7 @@ def upload_success(path, year):
     lines = [line for line in success_data.split('\n')]
 
     for line in lines:
-        if line:
+        if line.strip():
             cleaned_line = [i.strip() for i in line.split(' ') if i.strip()]
             name = '{} {}'.format(cleaned_line[0], cleaned_line[1])
             school = ' '.join(cleaned_line[2:])
