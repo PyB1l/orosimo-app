@@ -16,7 +16,7 @@ from api import api
 from admin import wsgi as admin_wsgi
 
 from app.handlers import (index_handler, list_handler, register_handler, success_handler,
-                          post_list, post_retrieve, not_found)
+                          post_list, post_retrieve, not_found, google_bot)
 
 wsgi = StripPathMiddleware(bottle.Bottle())
 
@@ -26,6 +26,7 @@ wsgi.mount('/api', api)
 wsgi.error(404)(not_found)
 
 wsgi.get('/')(index_handler)
+wsgi.get('/google5c7b68b49a8b8161.html')(google_bot)
 wsgi.get('/studies')(list_handler)
 wsgi.get('/register')(register_handler)
 wsgi.get('/success')(success_handler)

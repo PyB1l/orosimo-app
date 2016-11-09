@@ -61,4 +61,9 @@ def post_list():
 
 @bottle.jinja2_view('404.html')
 def not_found(error):
+    return {"error": "Not Found"} if error else {}
+
+
+@bottle.jinja2_view('google5c7b68b49a8b8161.html')
+def google_bot():
     return {}
