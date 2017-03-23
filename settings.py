@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """`orosimo-app` settings module.
 
-Provides basic configuration variables for app.
+Provides basic configuration variables for orosimo app.
 """
 
 from pgtools import DBPoolEngine
