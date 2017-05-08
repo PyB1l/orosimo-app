@@ -61,6 +61,5 @@ class DBEngine(object):
     @classmethod
     def make(cls, **kwargs):
         if not cls.engine_instance:
-            print('Initialization')
             cls.engine_instance = DBPoolEngine(**kwargs)
         return cls.engine_instance

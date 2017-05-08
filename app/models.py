@@ -10,7 +10,6 @@ from settings import DBEngine, POSTGRES
 
 
 engine = DBEngine.make(**POSTGRES)
-print('hi')
 
 
 class ModelError(Exception):
