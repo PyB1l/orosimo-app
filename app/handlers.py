@@ -32,7 +32,7 @@ def success_handler():
     return {'page_breadcrumb': u'ΕΠΙΤΥΧΙΕΣ', 'success_data': success_data}
 
 
-@bottle.jinja2_view('app/success.html')
+@bottle.jinja2_view('app/studies.html')
 def studies_handler():
     return {'page_breadcrumb': u'ΟΔΗΓΟΣ ΣΠΟΥΔΩΝ'}
 
