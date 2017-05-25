@@ -9,13 +9,12 @@ __pycache__/
 *.so
 
 .idea
-
+node_modules/
 # Distribution / packaging
 .Python
 env/
-build/
+static/app/js/build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/

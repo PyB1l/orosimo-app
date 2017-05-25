@@ -2,7 +2,7 @@ bottle
 cython
 cffi
 bottle-smart-filters
--e git+https://github.com/agile4you/pgtools.git#egg=pgtools
+-e git+https://github.com/agile4you/pycom.git@83f535fa871ea3653cba158fef46a03732f16987#egg=pycom
 bottle-neck
 click
 SchemaFactory
@@ -13,4 +13,5 @@ pytest-cov
 coveralls
 Sphinx
 sqlalchemy
+lunatic
 snaql

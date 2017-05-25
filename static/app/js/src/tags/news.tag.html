@@ -17,21 +17,21 @@
             </div>
         </div>
     </div>
+    <script>
+        const tag = this;
+        tag.newslist = [];
+        tag.api = '/api/v1.0/?limit=3';
 
-    this.newslist = []
-    this.api = '/admin/api/post/get_latest/3'
 
-    var self = this
-
-    this.on("mount", function() {
-        $.getJSON(self.api).done(function(resp) {
-            self.newslist = resp.data
-            self.newslist.forEach(function (post) {
-                post.body = post.body.slice(0, 60) + ' ...'
+        tag.on("mount", function() {
+            $.getJSON(tag.api).done(function(resp) {
+                tag.newslist = resp.data;
+                tag.newslist.forEach(function (post) {
+                    post.body = post.body.slice(0, 60) + ' ...';
+                });
+                tag.update();
+                console.dir(tag.newslist);
             })
-            self.update()
-            console.dir(self.newslist)
-          })
-    })
-
+        })
+    </script>
 </news>

@@ -1,0 +1,34 @@
+'use strict';
+
+riot.tag2('success', '<div class="blog-comment"> <blockquote style="font-family: \'Roboto Condensed\', sans-serif"> ... γιατί οι δικές σας επιτυχίες μας επιβεβαιώνουν στην πράξη εδώ και 25 χρόνια! </blockquote> <div class="single-widget"> <ul class="nav nav-tabs"> <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-family: \'Roboto Condensed\', sans-serif">Έτος <b class="caret"></b></a> <ul class="dropdown-menu"> <li each="{available}" onclick="{load}"><a href="#{school_year}" role="tab" data-toggle="tab">{school_year}</a></li> </ul> </li> <li role="presentation" class="disabled active"><a href="#" style="font-family: \'Roboto Condensed\', sans-serif">{current}</a></li> </ul> <div class="single-from-blog"> <table class="table table-hover table-striped"> <thead class="thead-inverse"> <tr> <th style="font-family: \'Roboto Condensed\', sans-serif">Ονοματεπώνυμο</th> <th style="font-family: \'Roboto Condensed\', sans-serif">Τμήμα</th> </tr> </thead> <tbody> <tr each="{success_list}"> <td>{full_name}</td> <td> {university} </td> </tr> </tbody> </table> </div> </div> </div>', '', '', function (opts) {
+
+    var tag = this;
+
+    tag.current = '';
+    tag.available = [];
+    tag.success_list = [];
+    tag.get_years = '/admin/api/success/available';
+    tag.get_success = '/admin/api/success/get_year/';
+    tag.load_year = load_year;
+    tag.load = load;
+
+    tag.on("mount", function () {
+        $.getJSON(tag.get_years).done(function (resp) {
+            tag.available = resp.data.years;
+            tag.load_year(tag.available[0].school_year);
+        });
+    });
+
+    function load_year(year) {
+        $.getJSON(tag.get_success + year).done(function (resp) {
+            tag.success_list = resp.data;
+            tag.current = year;
+            tag.update();
+        });
+    }
+
+    function load(event) {
+        event.preventDefault();
+        tag.load_year(event.currentTarget.innerText);
+    }
+});

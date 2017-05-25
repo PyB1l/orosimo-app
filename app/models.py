@@ -4,52 +4,41 @@
 Contains the external services for handling external functionality.
 """
 
-from pgtools import DBPoolEngine, DBAPIBackend, ViewField, DBAPIError
-from pgtools.engine import EngineError
-from settings import DBEngine, POSTGRES
+from schema_factory import BaseSchema, StringNode, BooleanNode, IntegerNode
+from pycom.attr import cached_classproperty
+from app.managers.success import SuccessManager
+from app.managers.post import PostManager
 
 
-engine = DBEngine.make(**POSTGRES)
+def uid_validator(value):
+    return str(value).isnumeric()
 
 
-class ModelError(Exception):
-    """Base Model Exception class.
+class Success(BaseSchema):
+    """Orosimo App success model.
     """
-    pass
+    id = StringNode(validators=[uid_validator])
+    full_name = StringNode()
+    school_year = IntegerNode()
+    university = StringNode()
+    promoted = BooleanNode(default=False)
+
+    @cached_classproperty
+    def manager(self):
+        return SuccessManager(self)
 
 
-class AdminModel(DBAPIBackend):
-    """Admin Database Schema Model
+class Post(BaseSchema):
+    """Orosimo App Post model.
     """
+    id = StringNode(validators=[uid_validator])
+    title = StringNode()
+    body = StringNode()
+    img = StringNode()
+    posted_at = StringNode()
+    likes = IntegerNode()
+    total_comments = IntegerNode()
 
-    get_latest = ViewField()
-
-    class Meta:
-
-        schema = 'admin'
-
-
-def admin_backend(action, fetch_opts='many', **params):
-    """
-    Args:
-        action:
-        fetch_opts:
-        **params:
-
-    Returns:
-
-    """
-    callback = getattr(AdminModel(), action) or None
-
-    try:
-        records = engine.query(callback(**params), fetch_opts=fetch_opts)
-
-    except (EngineError, DBAPIError) as error:
-        raise ModelError(error.args[0])
-
-    return records
-
-
-if __name__ == '__main__':
-
-    print(admin_backend('get_latest'))
+    @cached_classproperty
+    def manager(self):
+        return PostManager(self)

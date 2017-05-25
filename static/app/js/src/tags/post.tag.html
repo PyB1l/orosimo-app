@@ -24,10 +24,10 @@
 
     </article>
     <br>
-        <br>
-        <br>
+    <br>
+    <br>
 
-     <div id="like" style="display: none" class="alert alert-success alert-dismissible" role="alert">
+    <div id="like" style="display: none" class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Συγxαρητήρια!</strong> Το Like στο άρθρο καταχωρήθηκε.
     </div>
@@ -37,44 +37,52 @@
         <strong>Συγxαρητήρια!</strong> Το Comment στο άρθρο καταχωρήθηκε.
     </div>
 
-    this.post = opts.post_id
-    this.like_api = '/admin/api/post/like/'
-    this.comment_api = '/admin/api/post/comment/'
-    var self = this
+    <script>
+        const tag  = this;
 
-    allPosts(event) {
-        event.preventDefault()
-        window.location = '/posts';
-    }
+        tag.post = opts.post_id;
+        tag.like_api = '/admin/api/post/like/';
+        tag.comment_api = '/admin/api/post/comment/';
+        tag.allPosts = allPosts;
+        tag.addLike = addLike;
+        tag.addComment = addComment;
 
-    addLike(event) {
-        event.preventDefault()
-         $.ajax({
-            type: "POST",
-            url: self.like_api + self.post,
-        }).done(function(resp) {
-            $("  #like").fadeIn("fast")
-        })
-    }
-
-    addComment(event) {
-        event.preventDefault()
-
-        comment_data = {
-            person: self.name.value,
-            email: self.email.value,
-            body: self.body.value
+        function allPosts(event) {
+            event.preventDefault();
+            window.location = '/posts';
         }
 
-         $.ajax({
-            type: "POST",
-            url: self.comment_api + self.post,
-            data: JSON.stringify(comment_data),
-            contentType: "application/json"
-        }).done(function(resp) {
-            $("  #comment").fadeIn("fast")
-        })
-    }
+        function addLike(event) {
+            event.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: tag.like_api + tag.post
+            }).done(function() {
+                $(" #like").fadeIn("fast");
+            })
+        }
+
+        function addComment(event) {
+            event.preventDefault();
+
+            let comment_data = {
+                person: tag.name.value,
+                email: tag.email.value,
+                body: tag.body.value
+            };
+
+            $.ajax({
+                type: "POST",
+                url: tag.comment_api + tag.post,
+                data: JSON.stringify(comment_data),
+                contentType: "application/json"
+            }).done(function() {
+                $(" #comment").fadeIn("fast");
+            })
+        }
+    </script>
+
+
 
 
 </post>

@@ -47,29 +47,34 @@
         </div>
     </div>
 
-    this.api = '/api/register'
-    this.submitted = true
+    <script>
+        const tag = this;
 
-    var self = this
+        tag.api = '/register';
+        tag.submitted = true;
+        tag.register = register;
 
-    register(event) {
-        event.preventDefault()
+        function register(event) {
+            event.preventDefault();
 
-        register_data = {
-            name: self.first_name.value + ' ' + self.last_name.value,
-            class: self.grade.value,
-            phone: self.phone.value,
-            school: self.grade.value,
-            address: self.area.value
+            let register_data = {
+                name: tag.first_name.value + ' ' + tag.last_name.value,
+                class: tag.grade.value,
+                phone: tag.phone.value,
+                school: tag.grade.value,
+                address: tag.area.value
+            };
+
+            $.ajax({
+                type: "POST",
+                url: tag.api,
+                data: JSON.stringify(register_data),
+                contentType: "application/json"
+            }).done(function() {
+                $("#complete").fadeIn("fast")
+            })
         }
 
-        $.ajax({
-            type: "POST",
-            url: self.api,
-            data: JSON.stringify(register_data),
-            contentType: "application/json"
-        }).done(function(resp) {
-            $("  #complete").fadeIn("fast")
-        })
-    }
+    </script>
+
 </register>

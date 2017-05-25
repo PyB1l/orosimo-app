@@ -90,6 +90,16 @@ def run(host, port, server, reloader, debug):
 
 
 @manager.command()
+def js_build():
+    return subprocess.Popen(
+        ('riot  --ext tag.html static/app/js/src/tags static/app/js/build/;'
+         ' node_modules/babel-cli/bin/babel.js static/app/js/build/ --out-dir static/app/js/dist/tags;'
+         ' node_modules/babel-cli/bin/babel.js static/app/js/src --out-dir static/app/js/dist/'),
+        shell=True
+    )
+
+
+@manager.command()
 def build():
     """Compile Web components in plain javascript.
     """

@@ -12,8 +12,6 @@ from os import environ
 
 SERVER_HOST = environ.get('APP_HOST') or 'oroshmo-ilion.gr'
 
-print('SERVER-HOST: {}'.format(SERVER_HOST))
-print('SERVER-HOST_ENV: {}'.format(environ.get('APP_HOST')))
 
 POSTGRES = {
     'pool_size': 10,
@@ -26,6 +24,14 @@ POSTGRES = {
     'database': 'oroshmoDB'
 }
 
+
+POSTGRES_v2 = {
+    'host': '212.47.240.141',
+    'port': 5432,
+    'user': 'pav',
+    'password': 'iverson',
+    'database': 'oroshmoDB'
+}
 
 SERVER_OPTS = {
     'host': '0.0.0.0',

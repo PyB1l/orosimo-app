@@ -18,38 +18,7 @@
 
 {% block content %}
 <register></register>
-<!--<div class="blog-comment">-->
-    <!--<h2>Online Εγγραφή</h2>-->
-    <!--<form class="comment-form" action="">-->
-        <!--<div class="form-group">-->
-            <!--<input name="first_name" type="text" placeholder="Όνομα" class="form-control">-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<input name="last_name" type="text" placeholder="Επώνυμο" class="form-control">-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<input name="area" type="text" placeholder="Περιοχή" class="form-control">-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<select name="grade" class="form-control selectpicker" title="Σχολική Tάξη">-->
-                <!--<option value="Γ Λυκείου">Γ Λυκείου</option>-->
-                <!--<option value="Β Λυκείου">B Λυκείου</option>-->
-                <!--<option value="Α Λυκείου">A Λυκείου</option>-->
-                <!--<option value="Γυμνάσιο">Γυμνάσιο</option>-->
-                <!--<option value="ΕΠΑΛ">ΕΠΑΛ</option>-->
-                <!--<option value="Νυχτερινό">Νυχτερινό ΓΕΛ</option>-->
-            <!--</select>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<input name="email" type="email" placeholder="Email" class="form-control">-->
-        <!--</div>-->
 
-        <!--<div class="form-group">-->
-            <!--<textarea name="comment" class="form-control" placeholder="σχόλιο"></textarea>-->
-        <!--</div>-->
-        <!--<button class="button button-default" data-text="υποβολή" type="submit"><span>υποβολή</span></button>-->
-    <!--</form>-->
-<!--</div>-->
 {% endblock %}
 
 {% block topnav %}
@@ -58,9 +27,9 @@
 
 
 {% block extra_js %}
-<script src="/static/app/components/news.js"></script>
-<script src="/static/app/components/search.js"></script>
-<script src="/static/app/components/register.js"></script>
+<script src="/static/app/js/dist/tags/news.js"></script>
+<script src="/static/app/js/dist/tags/search.js"></script>
+<script src="/static/app/js/dist/tags/register.js"></script>
 <script>
     var newsfeed = riot.mount('news');
     var search = riot.mount('search');

@@ -12,24 +12,27 @@ import bottle
 from bottle.ext.neck import StripPathMiddleware
 
 #  import mount
-from api import api
+from app.api import api
+from app.urls import app_router
 from admin import wsgi as admin_wsgi
-
-from app.handlers import (index_handler, list_handler, register_handler, success_handler,
-                          post_list, post_retrieve, not_found, google_bot, studies_handler)
 
 wsgi = StripPathMiddleware(bottle.Bottle())
 
+# Mount routing in app
+
+app_router.mount(wsgi)
+
+# Mount internal apps.
+
 wsgi.mount('/admin', admin_wsgi)
-wsgi.mount('/api', api)
+wsgi.mount('/api/v1.0', api)
 
-wsgi.error(404)(not_found)
+# Override error handlers.
 
-wsgi.get('/')(index_handler)
-wsgi.get('/google5c7b68b49a8b8161.html')(google_bot)
-wsgi.get('/register')(register_handler)
-wsgi.get('/studies')(studies_handler)
-wsgi.get('/success')(success_handler)
-wsgi.get('/posts')(post_list)
-wsgi.get('/posts/<uid>')(post_retrieve)
+wsgi.error(404)(lambda error: bottle.jinja2_template('404.html', {"error": "Not Found"}))
+wsgi.error(405)(lambda error: bottle.jinja2_template('404.html', {"error": "Not Found"}))
+
+# static files serving.
+
 wsgi.route("/static/<filename:path>")(functools.partial(bottle.static_file, root='static/'))
+
