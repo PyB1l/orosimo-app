@@ -29,6 +29,12 @@ class StudiesView(BaseHandler):
         return self.render('app/studies.html', context)
 
 
+class AboutView(BaseHandler):
+    def get(self):
+        context = {'page_breadcrumb': u'ΓΝΩΡΙΣΕ ΜΑΣ'}
+        return self.render('app/about.html', context)
+
+
 class RegisterView(BaseHandler):
 
     response_factory = WSResponse

@@ -40,3 +40,12 @@ create unique index on admin.success (id);
 create index on admin.success (school_year);
 create index on admin.success (full_name);
 create index on admin.success (promoted) where (promoted = true);
+
+
+CREATE TABLE admin.newsletter (
+    id serial not null primary key,
+    email text not null
+);
+
+create unique index on admin.newsletter (id);
+create index on admin.newsletter (email);
