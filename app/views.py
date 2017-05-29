@@ -49,7 +49,7 @@ class NewsLetterView(BaseHandler):
         except (SchemaError, SchemaFactoryError) as error:
             return WSResponse.bad_request(errors=error.args)
 
-        instance = NewsLetter.manager.create(**newsletter_data, fields=[])
+        instance = NewsLetter.manager.create(fields=[], **newsletter_data)
 
         return WSResponse.ok(data=instance)
 
