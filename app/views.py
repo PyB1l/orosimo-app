@@ -7,7 +7,7 @@ Contains the Application web handlers.
 
 import bottle
 import math
-from app.models import Post, Success
+from app.models import Post, Success, NewsLetter
 from app.services.email import mail_service
 from bottle_neck import BaseHandler, WSResponse
 
@@ -25,7 +25,8 @@ class HomeView(BaseHandler):
 
 class StudiesView(BaseHandler):
     def get(self):
-        context = {'page_breadcrumb': u'ΟΔΗΓΟΣ ΣΠΟΥΔΩΝ'}
+        studies_tab = self.request.query.get('tab') or 'fail'
+        context = {'page_breadcrumb': u'ΟΔΗΓΟΣ ΣΠΟΥΔΩΝ', 'active': studies_tab}
         return self.render('app/studies.html', context)
 
 
@@ -33,6 +34,24 @@ class AboutView(BaseHandler):
     def get(self):
         context = {'page_breadcrumb': u'ΓΝΩΡΙΣΕ ΜΑΣ'}
         return self.render('app/about.html', context)
+
+
+class NewsLetterView(BaseHandler):
+
+    cors_enabled = True
+
+    def post(self):
+        newsletter_data = self.request.json
+
+        try:
+            NewsLetter(**newsletter_data)
+
+        except (SchemaError, SchemaFactoryError) as error:
+            return WSResponse.bad_request(errors=error.args)
+
+        instance = NewsLetter.manager.create(**newsletter_data, fields=[])
+
+        return WSResponse.ok(data=instance)
 
 
 class RegisterView(BaseHandler):

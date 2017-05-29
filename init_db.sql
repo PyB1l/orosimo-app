@@ -44,8 +44,10 @@ create index on admin.success (promoted) where (promoted = true);
 
 CREATE TABLE admin.newsletter (
     id serial not null primary key,
-    email text not null
+    email text not null,
+    registered_at TIMESTAMP;
 );
 
 create unique index on admin.newsletter (id);
 create index on admin.newsletter (email);
+create index on admin.newsletter (registered_at);

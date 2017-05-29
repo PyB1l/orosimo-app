@@ -28,13 +28,13 @@
     <hr>
     <div>
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#fail" aria-controls="home" role="tab" data-toggle="tab">Χειμερινές σπουδές</a></li>
-            <li role="presentation"><a href="#summer" aria-controls="profile" role="tab" data-toggle="tab">Θερινές Σπουδές</a></li>
+            <li role="presentation" class="{% if active == 'fail' %}active{% endif %}"><a href="#fail" aria-controls="home" role="tab" data-toggle="tab">Χειμερινές σπουδές</a></li>
+            <li role="presentation" class="{% if active == 'summer' %}active{% endif %}"><a href="#summer" aria-controls="profile" role="tab" data-toggle="tab">Θερινές Σπουδές</a></li>
         </ul>
 
 
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="fail">
+            <div role="tabpanel" class="{% if active == 'fail' %} tab-pane active {% else %} tab-pane  {% endif %}" id="fail">
                 <br>
                 <br>
 
@@ -49,6 +49,8 @@
                         <li role="presentation"><a href="#blikeiou" aria-controls="profile" role="tab" data-toggle="tab">B' Λυκείου</a></li>
                         <li role="presentation"><a href="#alikeiou" aria-controls="messages" role="tab" data-toggle="tab">A' Λυκείου</a></li>
                         <li role="presentation"><a href="#gymn" aria-controls="settings" role="tab" data-toggle="tab">Γυμνάσιο</a></li>
+                        <li role="presentation"><a href="#epal" aria-controls="settings" role="tab" data-toggle="tab">ΕΠΑΛ</a></li>
+
                     </ul>
 
                     <!-- Tab panes -->
@@ -56,44 +58,57 @@
                         <div role="tabpanel" class="tab-pane active" id="glikeiou">
                             <div class="container">
                                 <br>
-                                <h3>Τεχνολογική - 13 ώρες</h3>
+                                <h3>Ομάδα Προσανατολισμού Θετικών Σπουδών</h3>
                                 <br>
 
-                                <h5><strong>1. Κύκλος Τεχνολογίας & Παραγωγής</strong></h5>
+                                <h5><strong>1. Βασικά</strong></h5>
 
                                 <div class="table-wrapper container" style="width">
                                     <table style="width: 52%" class="table-hover table-striped table">
                                         <thead></thead>
                                         <tbody>
                                         <tr>
-                                            <td style="width:60%">Μαθηματικά</td>
-                                            <td style="width:40%">4</td>
+                                            <td style="width:60%">Φυσική</td>
+                                            <td style="width:40%">5</td>
                                         </tr>
                                         <tr>
-                                            <td>Φυσική - Μηχανική</td>
-                                            <td>4</td>
+                                            <td>Χημεία</td>
+                                            <td>3</td>
                                         </tr>
                                         <tr>
-                                            <td>Φυσική - Μηχανική</td>
-                                            <td>4</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ηλεκτρολογία</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Χημεία - Βιοχημεία</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Νέα</td>
+                                            <td>Ν. Γλώσσα</td>
                                             <td>2</td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
 
-                                <h5><strong>2. Κύκλος Πληροφορικής & Υπηρεσιών</strong></h5>
+                                <h5><strong>2. Επιλογής</strong></h5>
+
+                                <div class="table-wrapper container" style="width">
+                                    <table style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Μαθηματικά (Θετικές)</td>
+                                            <td style="width:40%">5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Βιολογία Γ.Π. (Υγείας)</td>
+                                            <td>4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ιστορία Γ.Π (Εκπαίδευσης)</td>
+                                            <td>4</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+                                <h3>Ομάδα Προσανατολισμού Σπουδών Οικονομίας <br> & Πληροφορικής </h3>
+                                <br>
+                                <br>
+                                <h5><strong>1. Βασικά</strong></h5>
 
                                 <div class="table-wrapper container" style="width">
                                     <table style="width: 52%" class="table-hover table-striped table">
@@ -101,22 +116,139 @@
                                         <tbody>
                                         <tr>
                                             <td style="width:60%">Μαθηματικά</td>
-                                            <td style="width:40%">4</td>
+                                            <td style="width:40%">5</td>
                                         </tr>
                                         <tr>
-                                            <td>Φυσική - Μηχανική</td>
-                                            <td>4</td>
+                                            <td>Α.Ε.Π.Π</td>
+                                            <td>3</td>
                                         </tr>
                                         <tr>
-                                            <td>Φυσική - Μηχανική</td>
-                                            <td>4</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ανάπτυξη εφαρμογών</td>
+                                            <td>Ν. Γλώσσα</td>
                                             <td>2</td>
                                         </tr>
                                         <tr>
-                                            <td>Αρχές Οργάνωσης</td>
+                                            <td>Ιστορία</td>
+                                            <td>1</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <br>
+                                <h5><strong>2. Επλογής</strong></h5>
+
+                                <div class="table-wrapper container" style="width">
+                                    <table style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Α.Ο.Θ (Οικονομικές & Πληροφορικής)</td>
+                                            <td style="width:40%">3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Βιολογία Γ.Π. (Υγείας)</td>
+                                            <td>3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ιστορία Γ.Π (Εκπαίδευσης)</td>
+                                            <td>2</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+                                <h3>Ομάδα Προσανατολισμού Ανθρωπιστικών Σπουδών</h3>
+                                <br>
+                                <h5><strong>1. Βασικά</strong></h5>
+
+                                <div class="table-wrapper container" style="width">
+                                    <table style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Αρχαία</td>
+                                            <td style="width:40%">5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ιστορία</td>
+                                            <td>3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ν. Γλώσσα</td>
+                                            <td>2</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+
+                                <h5><strong>1. Επιλογής</strong></h5>
+
+                                <div class="table-wrapper container" style="width">
+                                    <table style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Λατινικά (Ανθρωπιστικές)</td>
+                                            <td style="width:40%">3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Βιολογία Γ.Π (Υγείας)</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Μαθηματικά Γ.Π (Εκπαίδευσης)</td>
+                                            <td>2</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="blikeiou">
+                            <div class="container">
+                                <br>
+                                <h3>Ομάδα Προσανατολισμού Θετικών Σπουδών</h3>
+                                <br>
+
+                                <h5><strong>1. Προσανατολισμού</strong></h5>
+
+                                <div class="table-wrapper container">
+                                    <table style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Μαθηματικά</td>
+                                            <td style="width:40%">2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Φυσική</td>
+                                            <td>2</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+
+                                <h5><strong>2. Κορμού</strong></h5>
+
+                                <div class="table-wrapper container">
+                                    <table style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Άλγεβρα</td>
+                                            <td style="width:40%">2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Φυσική</td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Χημεία</td>
                                             <td>1</td>
                                         </tr>
                                         <tr>
@@ -127,19 +259,111 @@
                                     </table>
                                 </div>
                                 <br>
-                                <h3>Θεωρητική - 13 ώρες</h3>
+
+                                <h5><strong>3. Επιλογής</strong></h5>
+
+                                <div class="table-wrapper container">
+                                    <table style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Άλγεβρα</td>
+                                            <td style="width:40%">2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Γεωμετρία</td>
+                                            <td>1</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
                                 <br>
-                                <div class="table-wrapper container" style="width">
+
+                                <h5><strong>4. Προετοιμασία για Γ' Λυκείου</strong></h5>
+
+                                <div class="table-wrapper container">
+                                    <table style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Μαθηματικά</td>
+                                            <td style="width:40%">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Βιολογία Κατ.</td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Βιολογία Κατ.</td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Φυσική Κατ.</td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Χημεία Κατ.</td>
+                                            <td>1</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <br>
+                                <br>
+
+                                <h3>Ομάδα Προσανατολισμού Ανθρωπιστικών Σπουδών</h3>
+
+                                <br>
+
+                                <h5><strong>1. Προσανατολισμού</strong></h5>
+
+                                <div class="table-wrapper container">
+                                    <table style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Αρχαία Αγν.</td>
+                                            <td style="width:40%">3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Αρχαία Γν.</td>
+                                            <td>2</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+
+                                <h5><strong>2. Κορμού</strong></h5>
+
+                                <div class="table-wrapper container">
+                                    <table style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Νέα</td>
+                                            <td style="width:40%">2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>* Άλγεβρα</td>
+                                            <td>2</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+
+                                <h5><strong>3. Προετοιμασία για Γ Λυκείου</strong></h5>
+
+                                <div class="table-wrapper container">
                                     <table style="width: 52%" class="table-hover table-striped table">
                                         <thead></thead>
                                         <tbody>
                                         <tr>
                                             <td style="width:60%">Αρχαία</td>
-                                            <td style="width:40%">5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Λογοτεχνία</td>
-                                            <td>2</td>
+                                            <td style="width:40%">1</td>
                                         </tr>
                                         <tr>
                                             <td>Λατινικά</td>
@@ -150,191 +374,123 @@
                                             <td>1</td>
                                         </tr>
                                         <tr>
-                                            <td>Νέα</td>
-                                            <td>2</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <br>
-                                <h3>Θετική - 13 ώρες</h3>
-                                <br>
-                                <div class="table-wrapper container" style="width">
-                                    <table style="width: 52%" class="table-hover table-striped table">
-                                        <thead></thead>
-                                        <tbody>
-                                        <tr>
-                                            <td style="width:60%">Μαθηματικά</td>
-                                            <td style="width:40%">4</td>
+                                            <td>ή</td>
+                                            <td></td>
                                         </tr>
                                         <tr>
-                                            <td>Φυσική</td>
-                                            <td>4</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Χημεία</td>
+                                            <td>Μαθηματικά Γ.Π.</td>
                                             <td>2</td>
                                         </tr>
                                         <tr>
-                                            <td>Βιολογία</td>
-                                            <td>2</td>
+                                            <td>Βιολογία Γ.Π.</td>
+                                            <td>1</td>
                                         </tr>
-                                        <tr>
-                                            <td>Νέα</td>
-                                            <td>2</td>
-                                        </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
                                 <br>
 
-                                <h3>Μαθήματα Επιλογής</h3>
+
+                                <h3>Ομάδα προσανατολισμού Οικονομίας <br> & Πληροφορικής </h3>
+
                                 <br>
-                                <div class="table-wrapper container" style="width">
+
+                                <h5><strong>1. Προσανατολισμού</strong></h5>
+
+                                <div class="table-wrapper container">
                                     <table style="width: 52%" class="table-hover table-striped table">
                                         <thead></thead>
                                         <tbody>
                                         <tr>
-                                            <td style="width:60%">Μαθηματικά Γενικής Παιδείας</td>
+                                            <td style="width:60%">Μαθηματικά</td>
                                             <td style="width:40%">2</td>
                                         </tr>
                                         <tr>
-                                            <td>Φυσική Γενικής Παιδείας</td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Βιολογία Γενικής Παιδείας</td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ιστορία Γενικής Παιδείας</td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Αρχές Οικονομικής Θεωρίας</td>
+                                            <td>Φυσική</td>
                                             <td>2</td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
-
-                            </div>
-                        </div>
-
-                        <div role="tabpanel" class="tab-pane" id="blikeiou">
-                            <div class="container">
                                 <br>
-                                <h3>Τεχνολογική - 13 ώρες</h3>
+
                                 <br>
-                                <div class="table-wrapper container" style="width">
+
+                                <h5><strong>2. Κορμού</strong></h5>
+
+                                <div class="table-wrapper container">
+                                    <table style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Άλγεβρα</td>
+                                            <td style="width:40%">2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Νέα</td>
+                                            <td>2</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+                                <h5><strong>3. Επιλογής</strong></h5>
+
+                                <div class="table-wrapper container">
+                                    <table style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Γεωμετρία</td>
+                                            <td style="width:40%">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Χημεία</td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Φυσική</td>
+                                            <td>1</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+                                <h5><strong>4. Προετοιμασία για Γ Λυκείου</strong></h5>
+
+                                <div class="table-wrapper container">
                                     <table style="width: 52%" class="table-hover table-striped table">
                                         <thead></thead>
                                         <tbody>
                                         <tr>
                                             <td style="width:60%">Μαθηματικά</td>
-                                            <td style="width:40%">3</td>
+                                            <td style="width:40%">1</td>
                                         </tr>
                                         <tr>
-                                            <td>Φυσική</td>
-                                            <td>3</td>
+                                            <td>Αν. Εφαρμογών</td>
+                                            <td>1</td>
                                         </tr>
                                         <tr>
-                                            <td>Άλγεβρα</td>
-                                            <td>2</td>
+                                            <td>Α.Ο.Θ</td>
+                                            <td>1</td>
                                         </tr>
                                         <tr>
-                                            <td>Φυσική Γενικής Παιδείας</td>
-                                            <td>2</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Νέα</td>
-                                            <td>2</td>
+                                            <td>ή</td>
+                                            <td></td>
                                         </tr>
                                         <tr>
-                                            <td>*Επιπλέον Φυσική Γ` Λυκείου</td>
+                                            <td>Βιολογία Γ.Π</td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ιστορία Γ.Π</td>
                                             <td>1</td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
-
-
-                                <h3>Θετική - 13 ώρες</h3>
-
-                                <div class="table-wrapper container" style="width">
-                                    <table  style="width: 52%" class="table-hover table-striped table">
-                                        <thead></thead>
-                                        <tbody>
-                                        <tr>
-                                            <td style="width:60%">Μαθηματικά</td>
-                                            <td style="width:40%">3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Φυσική</td>
-                                            <td>3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Χημεία</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Φυσική Γενικής Παιδείας</td>
-                                            <td>2</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Νέα</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>*Επιπλέον Φυσική Γ` Λυκείου</td>
-                                            <td>2</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <h3>Θεωρητική - 13 ώρες</h3>
-
-                                <div class="table-wrapper container" style="width">
-                                    <table  style="width: 52%" class="table-hover table-striped table">
-                                        <thead></thead>
-                                        <tbody>
-                                        <tr>
-                                            <td style="width:60%">Aρχαίο Άγνωστο</td>
-                                            <td style="width:40%">3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Αρχαίο Γνωστό</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Λατινικά</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Αρχαία Γενικής Παιδείας</td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Νέα</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Αρχαία Γνωστό Γ` Λυκείου</td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Άλγεβρα επιλογής</td>
-                                            <td>2</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-
-
+                                <br>
 
 
                             </div>
@@ -388,28 +544,49 @@
                                 </div>
 
                                 <h3>Από Α` Λυκείου με στόχο τη θεωρητική</h3>
-
+                                <br>
+                                \                                <br>
                                 <div class="table-wrapper container" style="width">
                                     <table  style="width: 52%" class="table-hover table-striped table">
                                         <thead></thead>
                                         <tbody>
                                         <tr>
-                                            <td style="width:60%">Μαθηματικά</td>
-                                            <td style="width:40%">3</td>
+                                            <td style="width:60%">Αρχαία</td>
+                                            <td style="width:40%">4</td>
                                         </tr>
                                         <tr>
                                             <td>Νέα - Γλώσσα</td>
                                             <td>2</td>
                                         </tr>
                                         <tr>
-                                            <td>Αρχαία</td>
+                                            <td>Άλγεβρα</td>
                                             <td>2</td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
 
-
+                                <h3>Μαθήματα Επιλογής</h3>
+                                <br>
+                                <div class="table-wrapper container" style="width">
+                                    <table  style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Γεωμετρία</td>
+                                            <td style="width:40%">2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Χημεία</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Φυσική</td>
+                                            <td>2</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
 
                             </div>
@@ -488,12 +665,8 @@
                                             <td style="width:40%">3</td>
                                         </tr>
                                         <tr>
-                                            <td>Νέα - Γλώσσα</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Αρχαία</td>
-                                            <td>2</td>
+                                            <td>Αρχαία - Νέα</td>
+                                            <td>3</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -504,13 +677,44 @@
 
                             </div>
                         </div>
+                        <div role="tabpanel" class="tab-pane" id="epal">
+                            <div class="container">
+                                <br>
+                                <h3>Βασικά Μαθήματα</h3>
+                                <br>
+                                <div class="table-wrapper container" style="width">
+                                    <table  style="width: 52%" class="table-hover table-striped table">
+                                        <thead></thead>
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:60%">Μαθηματικά</td>
+                                            <td style="width:40%">4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Νέα - Γλώσσα</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Α' Μαθ. Ειδικ.</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Β' Μαθ. Ειδικ.</td>
+                                            <td>2</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
 
                     <hr>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="summer">
+            <div role="tabpanel" class="{% if active == 'summer' %} tab-pane active {% else %} tab-pane  {% endif %}" id="summer">
                 <br>
                 <br>
                 <div id="summer_container">
@@ -629,7 +833,7 @@
                                 <br>
 
 
-                                <h3>Ομάδα προσανατολισμού Σπουδών Οικονομίας & ΠΛηροφορικής</h3>
+                                <h3>Ομάδα προσανατολισμού Σπουδών Οικονομίας <br> & ΠΛηροφορικής</h3>
                                 <br>
                                 <h5><strong>1. Βασικά</strong></h5>
 
@@ -781,10 +985,12 @@
 <script src="/static/app/js/dist/tags/news.js"></script>
 <script src="/static/app/js/dist/tags/future.js"></script>
 <script src="/static/app/js/dist/tags/search.js"></script>
+<script src="/static/app/js/dist/tags/newsletter.js"></script>
 <script>
     var newsfeed = riot.mount('news');
     var search = riot.mount('search');
     var future = riot.mount('future');
+    var newsletter = riot.mount('newsletter');
 
 </script>
 {% endblock %}

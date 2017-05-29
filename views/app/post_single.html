@@ -30,7 +30,7 @@
         <p>Posted by <a href="#" class="blog-admin">διαχείρηση ΟΡΟΣΗΜΟ</a> on <span class="blog-date">{{ post.posted_at }}</span></p>
     </div>
     <figure>
-        <a href="blog-single.html"><img alt="img" src="{{ post.img }}"></a>
+        <a href="#"><img alt="img" src="{{ post.img }}"></a>
     </figure>
     <div class="blog-details-content">
         <p>{{ post.body }}</p>
@@ -47,11 +47,16 @@
 
 {% block extra_js %}
 <script src="/static/app/js/dist/tags/news.js"></script>
+<script src="/static/app/js/dist/tags/future.js"></script>
 <script src="/static/app/js/dist/tags/search.js"></script>
+<script src="/static/app/js/dist/tags/newsletter.js"></script>
 <script src="/static/app/js/dist/tags/post.js"></script>
 <script>
+    var post = riot.mount('post');
     var newsfeed = riot.mount('news');
     var search = riot.mount('search');
-    var post = riot.mount('post', {post_id: {{ post.id }}});
+    var future = riot.mount('future');
+    var newsletter = riot.mount('newsletter');
+
 </script>
 {% endblock %}

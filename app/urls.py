@@ -1,6 +1,6 @@
 from bottle_neck import Router
 from app.views import HomeView, SuccessView, RegisterView, GoogleView, \
-    StudiesView, PostView, AboutView
+    StudiesView, PostView, AboutView, NewsLetterView
 
 
 app_router = Router()
@@ -13,6 +13,7 @@ app_router.register_handler(SuccessView, '/success')
 app_router.register_handler(StudiesView, '/studies')
 app_router.register_handler(AboutView, '/about')
 app_router.register_handler(PostView, '/posts')
+app_router.register_handler(NewsLetterView, '/newsletter')
 app_router.register_handler(RegisterView, '/register')
 
 # Google SEO related Views

@@ -8,6 +8,7 @@ from schema_factory import BaseSchema, StringNode, BooleanNode, IntegerNode
 from pycom.attr import cached_classproperty
 from app.managers.success import SuccessManager
 from app.managers.post import PostManager
+from app.managers.newsletter import NewsLetterManager
 
 
 def uid_validator(value):
@@ -42,3 +43,15 @@ class Post(BaseSchema):
     @cached_classproperty
     def manager(self):
         return PostManager(self)
+
+
+class NewsLetter(BaseSchema):
+    """Orosimo App NewsLetter model.
+    """
+    id = StringNode(validators=[uid_validator])
+    email = StringNode()
+    registered_at = StringNode()
+
+    @cached_classproperty
+    def manager(self):
+        return NewsLetterManager(self)

@@ -28,13 +28,20 @@
 
 
 {% block extra_js %}
+<!-- sidebar -->
 <script src="/static/app/js/dist/tags/news.js"></script>
+<script src="/static/app/js/dist/tags/future.js"></script>
 <script src="/static/app/js/dist/tags/search.js"></script>
+<script src="/static/app/js/dist/tags/newsletter.js"></script>
+<!-- end of side bar -->
 <script src="/static/app/js/dist/tags/success.js"></script>
-
 <script>
+    var success = riot.mount('success');
+
     var newsfeed = riot.mount('news');
     var search = riot.mount('search');
-    var success = riot.mount('success');
+    var future = riot.mount('future');
+    var newsletter = riot.mount('newsletter');
+
 </script>
 {% endblock %}

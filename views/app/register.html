@@ -28,11 +28,20 @@
 
 {% block extra_js %}
 <script src="/static/app/js/dist/tags/news.js"></script>
+<script src="/static/app/js/dist/tags/future.js"></script>
 <script src="/static/app/js/dist/tags/search.js"></script>
+<script src="/static/app/js/dist/tags/newsletter.js"></script>
+
 <script src="/static/app/js/dist/tags/register.js"></script>
+
+
+
 <script>
+    var register = riot.mount('register');
     var newsfeed = riot.mount('news');
     var search = riot.mount('search');
-    var register = riot.mount('register');
+    var future = riot.mount('future');
+    var newsletter = riot.mount('newsletter');
+
 </script>
 {% endblock %}

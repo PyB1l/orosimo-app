@@ -22,6 +22,11 @@ MAIL_TEMPLATE = """
 <hr>
 """
 
+NEWSLETTER_TEMPLATE = """
+<h1>ΟΡΟΣΗΜΟ newsletter</h1><hr>
+<hr>
+"""
+
 
 class ServiceError(Exception):
     """Raises when a service error occurs.
