@@ -288,6 +288,7 @@
 </section>
 <!-- End counter section -->
 
+{% if not mobile %}
 <section id="call-to-action-2">
   <img src="/static/app/images/back2.png" alt="img">
   <div class="call-to-overlay">
@@ -304,7 +305,7 @@
     </div>
   </div>
 </section>
-
+{% endif %}
 
 <!-- Start service section -->
 <section id="service">
@@ -333,7 +334,6 @@
 <!-- End service section -->
 
 
-{% if not mobile %}
 <!-- Start call to action -->
 <section id="call-to-action">
   <img src="/static/app/images/back2.png" alt="img">
@@ -347,7 +347,6 @@
   </div>
 </section>
 <!-- End call to action -->
-{% endif %}
 
 
 
