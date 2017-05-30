@@ -1,4 +1,4 @@
-{% extends 'page_base.html' %}
+{% extends 'page_base_full.html' %}
 
 {% block title %}
 {{ super() }} - Γνώρισε μας
@@ -6,13 +6,264 @@
 
 
 {% block extra_css %}
+.timeline {
+position: relative;
+padding:4px 0 0 0;
+margin-top:22px;
+list-style: none;
+}
 
+.timeline>li:nth-child(even) {
+position: relative;
+margin-bottom: 50px;
+height: 180px;
+right:-100px;
+}
+
+.timeline>li:nth-child(odd) {
+position: relative;
+margin-bottom: 50px;
+height: 180px;
+left:-100px;
+}
+
+.timeline>li:before,
+.timeline>li:after {
+content: " ";
+display: table;
+}
+
+.timeline>li:after {
+clear: both;
+min-height: 170px;
+}
+
+.timeline > li .timeline-panel {
+position: relative;
+float: left;
+width: 41%;
+padding: 0 20px 20px 30px;
+text-align: right;
+}
+
+.timeline>li .timeline-panel:before {
+right: auto;
+left: -15px;
+border-right-width: 15px;
+border-left-width: 0;
+}
+
+.timeline>li .timeline-panel:after {
+right: auto;
+left: -14px;
+border-right-width: 14px;
+border-left-width: 0;
+}
+
+.timeline>li .timeline-image {
+z-index: 100;
+position: absolute;
+left: 50%;
+border: 7px solid #3b5998;
+border-radius: 100%;
+background-color: #3b5998;
+box-shadow: 0 0 5px #4582ec;
+width: 200px;
+height: 200px;
+margin-left: -100px;
+}
+
+.timeline>li .timeline-image h4 {
+margin-top: 12px;
+font-size: 10px;
+line-height: 14px;
+}
+
+.timeline>li.timeline-inverted>.timeline-panel {
+float: right;
+padding: 0 30px 20px 20px;
+text-align: left;
+}
+
+.timeline>li.timeline-inverted>.timeline-panel:before {
+right: auto;
+left: -15px;
+border-right-width: 15px;
+border-left-width: 0;
+}
+
+.timeline>li.timeline-inverted>.timeline-panel:after {
+right: auto;
+left: -14px;
+border-right-width: 14px;
+border-left-width: 0;
+}
+
+.timeline>li:last-child {
+margin-bottom: 0;
+}
+
+.timeline .timeline-heading h4 {
+margin-top:22px;
+margin-bottom: 4px;
+padding:0;
+color: #ee4532;
+}
+
+.timeline .timeline-heading h4.subheading {
+margin:0;
+padding:0;
+text-transform: none;
+font-size:18px;
+color:#333333;
+}
+
+.timeline .timeline-body>p,
+.timeline .timeline-body>ul {
+margin-bottom: 0;
+color:#808080;
+}
+/*Style for even div.line*/
+.timeline>li:nth-child(odd) .line:before {
+content: "";
+position: absolute;
+top: 60px;
+bottom: 0;
+left: 690px;
+width: 4px;
+height:340px;
+background-color: #3b5998;
+-ms-transform: rotate(-44deg); /* IE 9 */
+-webkit-transform: rotate(-44deg); /* Safari */
+transform: rotate(-44deg);
+box-shadow: 0 0 5px #4582ec;
+}
+/*Style for odd div.line*/
+.timeline>li:nth-child(even) .line:before  {
+content: "";
+position: absolute;
+top: 60px;
+bottom: 0;
+left: 450px;
+width: 4px;
+height:340px;
+background-color: #3b5998;
+-ms-transform: rotate(44deg); /* IE 9 */
+-webkit-transform: rotate(44deg); /* Safari */
+transform: rotate(44deg);
+box-shadow: 0 0 5px #4582ec;
+}
+/* Medium Devices, .visible-md-* */
+@media (min-width: 992px) and (max-width: 1199px) {
+.timeline > li:nth-child(even) {
+margin-bottom: 0px;
+min-height: 0px;
+right: 0px;
+}
+.timeline > li:nth-child(odd) {
+margin-bottom: 0px;
+min-height: 0px;
+left: 0px;
+}
+.timeline>li:nth-child(even) .timeline-image {
+left: 0;
+margin-left: 0px;
+}
+.timeline>li:nth-child(odd) .timeline-image {
+left: 690px;
+margin-left: 0px;
+}
+.timeline > li:nth-child(even) .timeline-panel {
+width: 76%;
+padding: 0 0 20px 0px;
+text-align: left;
+}
+.timeline > li:nth-child(odd) .timeline-panel {
+width: 70%;
+padding: 0 0 20px 0px;
+text-align: right;
+}
+.timeline > li .line {
+display: none;
+}
+}
+/* Small Devices, Tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+.timeline > li:nth-child(even) {
+margin-bottom: 0px;
+min-height: 0px;
+right: 0px;
+}
+.timeline > li:nth-child(odd) {
+margin-bottom: 0px;
+min-height: 0px;
+left: 0px;
+}
+.timeline>li:nth-child(even) .timeline-image {
+left: 0;
+margin-left: 0px;
+}
+.timeline>li:nth-child(odd) .timeline-image {
+left: 520px;
+margin-left: 0px;
+}
+.timeline > li:nth-child(even) .timeline-panel {
+width: 70%;
+padding: 0 0 20px 0px;
+text-align: left;
+}
+.timeline > li:nth-child(odd) .timeline-panel {
+width: 70%;
+padding: 0 0 20px 0px;
+text-align: right;
+}
+.timeline > li .line {
+display: none;
+}
+}
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 767px) {
+.timeline > li:nth-child(even) {
+margin-bottom: 0px;
+min-height: 0px;
+right: 0px;
+}
+.timeline > li:nth-child(odd) {
+margin-bottom: 0px;
+min-height: 0px;
+left: 0px;
+}
+.timeline>li .timeline-image {
+position: static;
+width: 150px;
+height: 150px;
+margin-bottom:0px;
+}
+.timeline>li:nth-child(even) .timeline-image {
+left: 0;
+margin-left: 0;
+}
+.timeline>li:nth-child(odd) .timeline-image {
+float:right;
+left: 0px;
+margin-left:0;
+}
+.timeline > li:nth-child(even) .timeline-panel {
+width: 100%;
+padding: 0 0 20px 14px;
+}
+.timeline > li:nth-child(odd) .timeline-panel {
+width: 100%;
+padding: 0 14px 20px 0px;
+}
+.timeline > li .line {
+display: none;
+}
+}
 
 {% endblock %}
 
-{% block sidebar %}
-{% include 'widgets/sidebar.html' %}
-{% endblock %}
+
 
 
 
@@ -28,96 +279,174 @@
 
 {% block content %}
 
+<div class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-area">
+                    <h2 class="tittle">Φροντιστήρια <span>ΟΡΟΣΗΜΟ</span></h2>
+                    <blockquote>Συνεχίζουμε 26 χρόνια  με τα ίδια συστατικά επιτυχίας</blockquote>
+                    <span class="tittle-line"></span>
+
+                </div>
+                <h3 class="text-center"></h3>
+                <!--<p class="text-center"><strong> Συνεχίζουμε 26 χρόνια  με τα ίδια συστατικά επιτυχίας</strong> -->
+                </p>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image">
+                            <img class="img-circle img-responsive" src="/static/app/images/stuff-final.png" alt="">
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Η ομάδα</h4>
+                                <!--<h4 class="subheading">Subtitle</h4>-->
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">
+Οι καθηγητές μας έχουν επιλεγεί πολύ προσεκτικά, με σαφή και αυστηρά κριτήρια. Αξιοποιούν στην εργασία τους το προσωπικό συγγραφικό έργο τους και το συγγραφικό έργο του φροντιστηρίου, ασχολούνται αποκλειστικά με ένα διδακτικό αντικείμενο. Είναι έμπειροι και καταξιωμένοι στην ειδικότητά τους με υψηλές φιλοδοξίες και σημαντική καριέρα στον τομέα της ιδιωτικής εκπαίδευσης.                                </p>
+
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <img class="img-circle img-responsive" src="/static/app/images/place.png" alt="">
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Εξατομίκευση</h4>
+                                <h4 class="subheading"></h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">
+                                    Με την αξιοποίηση διαγνωστικών εργαλείων θα προσπαθήσουμε να προσεγγίσουμε όσο καλύτερα μπορούμε το ιδιαίτερο προφίλ σου και να δούμε ποια είναι τα δυνατά <strong>ατού</strong> σου, στα οποία μπορούμε να βασιστούμε και να τα αναπτύξουμε, ποιες είναι οι αδυναμίες ή τα κενά από προηγούμενες τάξεις, τα οποία πρέπει να καλύψουμε.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                    </li>
+                    <li>
+                        <div class="timeline-image">
+                            <img class="img-circle img-responsive" src="/static/app/images/support.png" alt="">
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 style="font-family: 'Roboto Condensed', sans-serif!important;">Υποστήριξη</h4>
+                                <h4 class="subheading"></h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">
+                                    Ο σύμβουλος εκπαίδευσης, ο οποίος είναι υπεύθυνος στο να παρακολουθεί την εξέλιξή σου, σε συνεννόηση με τη Διεύθυνση, αναδιαμορφώνει το πρόγραμμα των Διαγωνισμάτων σου , αν κρίνει ότι χρειάζεσαι περισσότερη εξάσκηση σε κάποια μαθήματα ή σε κάποια συγκεκριμένη ύλη, ανάλογα με τις ανάγκες σου.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <img class="img-circle img-responsive" src="/static/app/images/plan.png" alt="">
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Σχεδιασμός</h4>
+                                <h4 class="subheading"></h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">
+                                    Επανάληψη γίνεται σε όλα τα μαθήματα δύο φορές το χρόνο εκτός ωρών διδασκαλίας, τα Χριστούγεννα και μετά την ολοκλήρωση της ύλης: (A) Με προγραμματισμό και οδηγίες μερικής επανάληψης ανά μάθημα σε τακτά χρονικά διαστήματα, (Β) Με επισκόπηση της ύλης από το Μάρτιο ως την έναρξη των εξετάσεων, (Γ) με πρόγραμμα μελέτης το οποίο δίνεται για μαθητές Λυκείου τρεις φορές το χρόνο.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                    </li>
+                    <li>
+                        <div class="timeline-image">
+                            <img class="img-circle img-responsive" src="/static/app/images/test.png" alt="">
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 style="font-family: 'Roboto Condensed', sans-serif!important;">Αξιολόγηση</h4>
+                                <h4 class="subheading"></h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">
+Kάθε εβδομάδα εξετάζεσαι στα επαναληπτικά διαγωνίσματα ή test του φροντιστηρίου, με τα οποία ελέγχεται κυκλικά η επίδοσή σου σε όλα τα μαθήματα. Στο δρόμο για τις Πανελλαδικές, ανά δίμηνο, διαγωνίζεσαι σε προσομοιωτικά θέματα αυξημένης δυσκολίας. Την ίδια στιγμή, εμείς ελέγχουμε το βαθμό στον οποίο ανταποκρίνεσαι στη διδακτική πρόταση και στις εκπαιδευτικές υπηρεσίες του φροντιστηρίου μας.                                </p>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <img class="img-circle img-responsive" src="/static/app/images/coordination.png" alt="">
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Επαγγελματικός Προσανατολισμός</h4>
+                                <h4 class="subheading"></h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">
+                                    Στην αρχή της σχολικής περιόδου θα παρακολουθήσεις σεμινάριο συμβουλευτικής για τις Πανελλαδικές εξετάσεις, ενώ κατά διάρκεια της χρονιάς σου παρέχεται συμβουλευτική υποστήριξη Επαγγελματισμού Προσανατολισμού μέσω ειδικών test που θα σε βοηθήσουν να αποσαφηνίσεις τα επαγγελματικά ενδιαφέροντά σου.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                    </li>
+
+
+                    <li>
+                        <div class="timeline-image">
+                            <img class="img-circle img-responsive" src="/static/app/images/classes.png" alt="">
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Ολιγομελή τμήματα - Τμήματα Αριστούχων</h4>
+                                <h4 class="subheading"></h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">
+                                    Κάθε μαθητής μας , πριν οριστικοποιηθεί η κατάταξή του σε ένα τμήμα, έχει αξιολογηθεί πολυεπίπεδα, ώστε να πετύχουμε τη μέγιστη ομοιογένεια όλων των τμημάτων. Aυτό συνθέτει τη δυναμική της ομάδας και του μαθητή, εξασφαλίζει την καλύτερη συνεργασία, αλληλεπίδραση και γρήγορο ρυθμό στη ροή του μαθήματος.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+
+<!-- Start call to action -->
+
+<!-- End call to action -->
+
 <!--<article class="single-from-blog">-->
-    <!--<div class="row">-->
-        <!--<div class="col-md-12 col-lg-12">-->
-            <!--<div class="about-area">-->
-                <!--<div class="row">-->
-                    <!--<div class="col-md-3 col-sm-3 col-xs-12 pull-left">-->
-                        <!--<div class="about-left">-->
-                            <!--<img src="/static/app/images/orosimo-inside-3.png" class="pull-left" alt="img">-->
-                            <!--<a class="introduction-btn" href="/studies">Γνώρισε μας</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-7 col-sm-6 col-xs-12 pull-right">-->
-                        <!--<div class="about-right">-->
-                            <!--<div class="title-area">-->
-                                <!--<h2 class="tittle">Καλωσόρισες στο <span>ΟΡΟΣΗΜΟ</span></h2>-->
-                                <!--<span class="tittle-line"></span>-->
-                                <!--<p style="font-family: 'Roboto Condensed', sans-serif">Το φροντιστήριο ΟΡΟΣΗΜΟ είναι το αποτέλεσμα μιας μακροχρόνιας φροντιστηριακής εμπειρίας καθώς και της φιλοδοξίας των συντελεστών του για ουσιαστικότερη προσφορά στο μαθητή. Το άρτια ειδικευμένο και έμπειρο εκπαιδευτικό προσωπικό, οι ανανεωμένες σημειώσεις μας, η ουσιαστική αξιολόγηση από τους ίδιους τους μαθητές, οι ανανεωμένοι ευχάριστοι χώροι, αλλά πάνω απ' όλα το μεράκι μας για την δικής σας επιτυχία, μας επιβραβεύουν πάνω από 26 χρόνια στην πράξη.</p>-->
-                                <!--<p style="font-family: 'Roboto Condensed', sans-serif">Κάνε τώρα και εσύ τη σωστή επιλογή, αξιοποιώντας τη λύση που έχεις στα χέρια σου. Επειδή το μέλλον σου ανήκει, προετοίμασε το με τους καλύτερους.</p>-->
-                                <!--<p style="font-family: 'Roboto Condensed', sans-serif">Έλα και εσύ στο <span>ΟΡΟΣΗΜΟ</span> των επιτυχιών.</p>-->
-
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-
+<!--<figure>-->
+<!--<a href="#"><img alt="img" src="/static/app/images/stuf-2.jpg"></a>-->
+<!--</figure>-->
+<!--<div class="blog-title">-->
+<!--<h2><a href="#">Προσωπικό</a></h2>-->
+<!--<p>Posted by <a href="#" class="blog-admin">διαχείρηση ΟΡΟΣΗΜΟ</a> on <span class="blog-date"></span></p>-->
+<!--</div>-->
+<!--<p></p>-->
+<!--<div class="blog-footer">-->
+<!--<a href="#"><span class="fa fa-comment"></span>Comments</a>-->
+<!--<a href="#"><span class="fa fa-thumbs-o-up"></span>Likes</a>-->
+<!--</div>-->
 <!--</article>-->
 
-
-<article class="single-from-blog">
-    <figure>
-        <a href="#"><img alt="img" src="/static/app/images/stuff.JPG"></a>
-    </figure>
-    <div class="blog-title">
-        <h2><a href="#">Προσωπικό</a></h2>
-        <p>Posted by <a href="#" class="blog-admin">διαχείρηση ΟΡΟΣΗΜΟ</a> on <span class="blog-date"></span></p>
-    </div>
-    <p></p>
-    <div class="blog-footer">
-        <a href="#"><span class="fa fa-comment"></span>Comments</a>
-        <a href="#"><span class="fa fa-thumbs-o-up"></span>Likes</a>
-    </div>
-</article>
-
-<article class="single-from-blog">
-    <figure>
-        <a href="#"><img alt="img" src="#"></a>
-    </figure>
-    <div class="blog-title">
-        <h2><a href="#">Ολιγομελή, ομοιογενή τμήματα, τμήματα Αριστούχων</a></h2>
-        <p>Posted by <a href="#" class="blog-admin">διαχείρηση ΟΡΟΣΗΜΟ</a> on <span class="blog-date"></span></p>
-    </div>
-    <p></p>
-    <div class="blog-footer">
-        <a href="#"><span class="fa fa-comment"></span>Comments</a>
-        <a href="#"><span class="fa fa-thumbs-o-up"></span>Likes</a>
-    </div>
-</article>
-
-<article class="single-from-blog">
-    <figure>
-        <a href="#"><img alt="img" src="#"></a>
-    </figure>
-    <div class="blog-title">
-        <h2><a href="#">Αξιολόγηγη</a></h2>
-        <p>Posted by <a href="#" class="blog-admin">διαχείρηση ΟΡΟΣΗΜΟ</a> on <span class="blog-date"></span></p>
-    </div>
-    <p></p>
-    <div class="blog-footer">
-        <a href="#"><span class="fa fa-comment"></span>Comments</a>
-        <a href="#"><span class="fa fa-thumbs-o-up"></span>Likes</a>
-    </div>
-</article>
-
-<article class="single-from-blog">
-    <figure>
-        <a href="#"><img alt="img" src="#"></a>
-    </figure>
-    <div class="blog-title">
-        <h2><a href="#">Υποστήριξη</a></h2>
-        <p>Posted by <a href="#" class="blog-admin">διαχείρηση ΟΡΟΣΗΜΟ</a> on <span class="blog-date"></span></p>
-    </div>
-    <p></p>
-    <div class="blog-footer">
-        <a href="#"><span class="fa fa-comment"></span>Comments</a>
-        <a href="#"><span class="fa fa-thumbs-o-up"></span>Likes</a>
-    </div>
-</article>
 
 {% endblock %}
 
