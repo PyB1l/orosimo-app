@@ -10,6 +10,9 @@ from os import path
 from os import environ
 
 
+DEBUG = False if environ.get('PROD') else True
+
+
 SERVER_HOST = environ.get('APP_HOST') or 'oroshmo-ilion.gr'
 
 

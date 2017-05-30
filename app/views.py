@@ -18,6 +18,7 @@ class HomeView(BaseHandler):
     def get(self):
         """Home page GET handler.
         """
+        print(self.request.get_header('user_agent'))
         posts = Post.manager.list(limit=3, offset=0, fields=[])
         context = {'posts': posts}
         return self.render('index.html', context)

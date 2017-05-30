@@ -8,7 +8,7 @@ import app
 import bottle
 import click
 import subprocess
-from settings import SERVER_OPTS, DBEngine, POSTGRES
+from settings import SERVER_OPTS, DBEngine, POSTGRES, DEBUG
 
 
 @click.group()
@@ -66,7 +66,7 @@ def upload_success(path, year):
 @click.option('--port', default=SERVER_OPTS['port'], type=int, help='Set Application server port.')
 @click.option('--server', default=SERVER_OPTS['server'], type=str, help='Set Application server wsgi container.')
 @click.option('--reloader', default=True, type=bool, help='Set Application server host reloader option.')
-@click.option('--debug', default=True, type=bool, help='Set Application server host debug mode.')
+@click.option('--debug', default=DEBUG, type=bool, help='Set Application server host debug mode.')
 def run(host, port, server, reloader, debug):
     """deploy application
 

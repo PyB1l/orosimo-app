@@ -4,8 +4,8 @@ import settings
 
 
 if __name__ == '__main__':
-
-    bottle.debug(True)
+    print(settings.DEBUG)
+    bottle.debug(settings.DEBUG)
 
     bottle.run(
         app=app.wsgi,
