@@ -31,6 +31,9 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
   <!-- Pacifico for 404 page   -->
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/static/app/css/video.css">
+
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -61,10 +64,18 @@
 
 <!-- Start header section -->
 <header id="header">
+
   <div class="header-inner">
+
+    <!-- test video -->
+    <video class="my-background-video jquery-background-video" loop autoplay muted poster="path/to/your/poster.jpg">
+      <source src="/static/app/assets/video.mp4" type="video/mp4">
+    </video>
+    <!-- End of test video -->
     <!-- Header image -->
     <img src="/static/app/images/header-bg.jpg" alt="img">
     <div class="header-overlay">
+
       <div class="header-content">
         <!-- Start header content slider -->
         <h2 class="header-slide">ΟΡΟΣΗΜΟ
@@ -246,8 +257,8 @@
               <div class="single-counter">
                 <span class="fa fa-graduation-cap"></span>
                 <div class="counter-count">
-                  <span class="counter">4199</span>
-                  <p>ΑΕΙ</p>
+                  <span class="counter">4410</span>
+                  <p>84% σε ΑΕΙ</p>
                 </div>
               </div>
             </div>
@@ -255,8 +266,8 @@
               <div class="single-counter">
                 <span class="fa fa-signal"></span>
                 <div class="counter-count">
-                  <span class="counter">1050</span>
-                  <p>TEI</p>
+                  <span class="counter">839</span>
+                  <p>16% σε TEI</p>
                 </div>
               </div>
             </div>
@@ -801,6 +812,7 @@
 
 <!-- initialize jQuery Library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="/static/app/js/dist/libs/jquery.vide.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- Bootstrap -->
 <script src="/static/app/js/dist/libs/bootstrap.js"></script>
@@ -814,6 +826,12 @@
 
 <!-- Custom js -->
 <script type="text/javascript" src="/static/app/js/dist/libs/custom.js"></script>
-
+<script>
+    $(document).ready(function(){
+        $('.my-background-video').bgVideo({
+            fullScreen: true
+        });
+    });
+</script>
 </body>
 </html>
