@@ -66,11 +66,12 @@
 <header id="header">
 
   <div class="header-inner">
-
+    {% if not mobile %}
     <!-- test video -->
     <video class="my-background-video jquery-background-video" loop autoplay muted poster="path/to/your/poster.jpg">
-      <source src="/static/app/assets/video.mp4" type="video/mp4">
+      <source src="/static/app/assets/video_final.mp4" type="video/mp4">
     </video>
+    {% endif %}
     <!-- End of test video -->
     <!-- Header image -->
     <img src="/static/app/images/header-bg.jpg" alt="img">

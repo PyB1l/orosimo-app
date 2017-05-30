@@ -18,9 +18,12 @@ class HomeView(BaseHandler):
     def get(self):
         """Home page GET handler.
         """
-        print(self.request.get_header('user_agent'))
+        print(self.request.get_header('user_agent'), type(self.request.get_header('user_agent')))
+        mobile = True if 'mobile' in self.request.get_header('user_agent').lower() or '' else False
+        print('Mobile Agent: ', mobile)
+
         posts = Post.manager.list(limit=3, offset=0, fields=[])
-        context = {'posts': posts}
+        context = {'posts': posts, 'mobile': mobile}
         return self.render('index.html', context)
 
 
