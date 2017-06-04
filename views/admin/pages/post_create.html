@@ -1,0 +1,77 @@
+{% extends 'admin/base.html' %}
+
+{% block section %}
+Διαχείρηση ΟΡΟΣΗΜΟ  <small>Δημιουργία Άρθρου</small>
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="active">Δημιουργία Άρθρου</li>
+{% endblock %}
+
+
+{% block sidebar %}
+{% include 'admin/widgets/sidebar.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">Δημιουργία Άρθρου</h3>
+                        <!-- tools box -->
+                        <div class="pull-right box-tools">
+                            <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fa fa-minus"></i></button>
+                            <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                <i class="fa fa-times"></i></button>
+                        </div>
+                        <!-- /. tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body pad">
+                        <form id="post_form" role="form">
+                            <div class="form-group">
+                                <label for="title">Τίτλος Άρθρου</label>
+                                <input type="text" name="title" class="form-control" id="title" placeholder="... τίτλος">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFile">Φωτογραφία Άρθρου</label>
+                                <input type="file" id="exampleInputFile">
+                                <p class="help-block">* προσοχή στις διαστάσεις (750 x 400).</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="editor1">Κείμενο άρθρου</label>
+                                <textarea id="editor1" name="body" rows="10" cols="80"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col-->
+        </div>
+        <!-- ./row -->
+    </section>
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+<script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+<script>
+    $(function () {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('editor1');
+        //bootstrap WYSIHTML5 - text editor
+        $(".textarea").wysihtml5();
+    });
+</script>
+
+{% endblock %}

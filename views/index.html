@@ -389,28 +389,68 @@
                       <!-- End of tab panel -->
                       <a href="#" class="modal-close-btn"><span class="fa fa-times"></span></a>
 
-                      <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#fsglyk" aria-controls="home" role="tab" data-toggle="tab" style="font-family: 'Roboto Condensed', sans-serif">Φυσική</a></li>
-                        <li role="presentation" class=""><a href="#aeglyk" aria-controls="profile" role="tab" data-toggle="tab" style="font-family: 'Roboto Condensed', sans-serif">Ανάπτυξη Εφαρμογών</a></li>
-                        <li role="presentation" class=""><a href="#aothglyk" aria-controls="about" role="tab" data-toggle="tab" style="font-family: 'Roboto Condensed', sans-serif">ΑΟΘ</a></li>
-                      </ul>
-                      <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="fsglyk">
-                          <ul class="list-group">
-                            <li class="list-group-item">Θέματα Προσωμοίωσης <small>2/6/2017</small>  <span class="badge"><a href="/static/uploads/exercises/ΦΥΣΙΚΗ.docx"><i class="fa fa-file-pdf-o" style="color: white" aria-hidden="true"></i></a></span></li>
-                          </ul>
+                      <!-- tables -->
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Θέματα Προσομοίωσης ΟΡΟΣΗΜΟ</h3>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="aeglyk">
-                          <ul class="list-group">
-                            <li class="list-group-item">Θέματα Προσωμοίωσης <small>2/6/2017</small> <span class="badge"><a href="/static/uploads/exercises/ΑΕ.docx"><i class="fa fa-file-pdf-o" style="color: white" aria-hidden="true"></i></a></span></li>
-                          </ul>
+                        <div class="panel-body">
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="aothglyk">
-                          <ul class="list-group">
-                            <li class="list-group-item">Θέματα Προσωμοίωσης <small>2/6/2017</small> <span class="badge"><a href="/static/uploads/exercises/ΑΟΘ.pdf"><i class="fa fa-file-pdf-o" style="color: white" aria-hidden="true"></i></a></span></li>
-                          </ul>
-                        </div>
+                        <table class="table table-hover" id="dev-table">
+                          <tbody>
+                          <tr>
+                            <td>#</td>
+                            <td>Μάθημα</td>
+                            <td><small>Δημοσίευση</small></td>
+                            <td>Αρχείο</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>Ανάπτυξη Εφαρμογών</td>
+                            <td><small>2/6/2017</small></td>
+                            <td><a href="/static/uploads/exercises/ΑΕ.docx"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>Φυσική</td>
+                            <td><small>2/6/2017</small></td>
+                            <td><a href="/static/uploads/exercises/ΦΥΣΙΚΗ.docx"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>ΑΟΘ</td>
+                            <td><small>2/6/2017</small></td>
+                            <td><a href="/static/uploads/exercises/ΑΟΘ.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td>Αρχαία</td>
+                            <td><small>2/6/2017</small></td>
+                            <td><a href="/static/uploads/exercises/ΑΡΧΑΙΑ.docx"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>Βιολογία</td>
+                            <td><small>2/6/2017</small></td>
+                            <td><a href="/static/uploads/exercises/ΒΙΟΛΟΓΙΑ.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                          </tr>
+                          <tr>
+                            <td>6</td>
+                            <td>Έκθεση</td>
+                            <td><small>2/6/2017</small></td>
+                            <td><a href="/static/uploads/exercises/ΝΕΑ.docx"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                          </tr>
+                          <tr>
+                            <td>7</td>
+                            <td>Ιστορία</td>
+                            <td><small>2/6/2017</small></td>
+                            <td><a href="/static/uploads/exercises/IΣΤΟΡΙΑ.doc"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                          </tr>
+                          </tbody>
+                        </table>
                       </div>
+
+                      <!-- End of tables -->
 
                     </div>
 
@@ -875,6 +915,66 @@
             fullScreen: true
         });
     });
+</script>
+<script>
+    /**
+     *   I don't recommend using this plugin on large tables, I just wrote it to make the demo useable. It will work fine for smaller tables
+     *   but will likely encounter performance issues on larger tables.
+     *
+     *		<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Developers" />
+     *		$(input-element).filterTable()
+     *
+     *	The important attributes are 'data-action="filter"' and 'data-filters="#table-selector"'
+     */
+    (function(){
+        'use strict';
+        var $ = jQuery;
+        $.fn.extend({
+            filterTable: function(){
+                return this.each(function(){
+                    $(this).on('keyup', function(e){
+                        $('.filterTable_no_results').remove();
+                        var $this = $(this),
+                            search = $this.val().toLowerCase(),
+                            target = $this.attr('data-filters'),
+                            $target = $(target),
+                            $rows = $target.find('tbody tr');
+
+                        if(search == '') {
+                            $rows.show();
+                        } else {
+                            $rows.each(function(){
+                                var $this = $(this);
+                                $this.text().toLowerCase().indexOf(search) === -1 ? $this.hide() : $this.show();
+                            })
+                            if($target.find('tbody tr:visible').size() === 0) {
+                                var col_count = $target.find('tr').first().find('td').size();
+                                var no_results = $('<tr class="filterTable_no_results"><td colspan="'+col_count+'">No results found</td></tr>')
+                                $target.find('tbody').append(no_results);
+                            }
+                        }
+                    });
+                });
+            }
+        });
+        $('[data-action="filter"]').filterTable();
+    })(jQuery);
+
+    $(function(){
+        // attach table filter plugin to inputs
+        $('[data-action="filter"]').filterTable();
+
+        $('.container').on('click', '.panel-heading span.filter', function(e){
+            var $this = $(this),
+                $panel = $this.parents('.panel');
+
+            $panel.find('.panel-body').slideToggle();
+            if($this.css('display') != 'none') {
+                $panel.find('.panel-body input').focus();
+            }
+        });
+        $('[data-toggle="tooltip"]').tooltip();
+    })
 </script>
 </body>
 </html>

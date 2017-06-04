@@ -69,6 +69,18 @@ def index():
 
 
 @login_required
+@jinja2_view('admin/pages/post_create.html')
+def post_create():
+    return {}
+
+
+@login_required
+@jinja2_view('admin/blank_template.html')
+def index_2():
+    return {}
+
+
+@login_required
 @jinja2_view('admin/pages/post.html')
 def post():
     return {}
