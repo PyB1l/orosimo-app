@@ -16,6 +16,8 @@ DEBUG = False if environ.get('PROD') else True
 SERVER_HOST = environ.get('APP_HOST') or 'oroshmo-ilion.gr'
 
 
+STATIC_ROOT = path.abspath(path.dirname(__file__))
+
 POSTGRES = {
     'pool_size': 10,
     'pool_type': 'threaded',

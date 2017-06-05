@@ -1,12 +1,14 @@
 import bottle
 from bottle_neck import StripPathMiddleware, Router
 from admin.handlers import login, logout, index, post, index_2, post_create
+from admin.views import PostAdminViewSet
 from admin.api import PostsAPIHandler, SuccessAPIHandler
 
 wsgi = StripPathMiddleware(bottle.Bottle())
 
 router = Router()
 
+router.register_handler(PostAdminViewSet, '/posts')
 router.register_handler(PostsAPIHandler, '/api/post')
 router.register_handler(SuccessAPIHandler, '/api/success')
 

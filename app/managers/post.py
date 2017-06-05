@@ -26,10 +26,29 @@ class PostManager(BaseStorageManager):
 
         return [self.model(**post).serialize(*fields or []) for post in records]
 
+    def create(self, model_instance, fields):
+        """Create a new Post object.
+        """
+        post = self._engine.create(
+            title=model_instance.title,
+            body=model_instance.body,
+            img=model_instance.img,
+            fetch_many=False
+        )
+
+        self.model(**post).serialize(*fields or []) if post else None
+
     def retrieve(self, uid, fields):
         """Retrieve a single Post object based on UID.
         """
         post = self._engine.retrieve(uid=uid, fetch_many=False)
+
+        return self.model(**post).serialize(*fields or []) if post else None
+
+    def delete(self, uid, fields):
+        """Delete a single Post object based on UID.
+        """
+        post = self._engine.delete(uid=uid, fetch_many=False)
 
         return self.model(**post).serialize(*fields or []) if post else None
 

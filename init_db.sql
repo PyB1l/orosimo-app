@@ -6,6 +6,10 @@ create table admin.post (
 	posted_at timestamp default now()
 );
 
+
+alter table admin.post add column is_public boolean default true;
+
+CREATE INDEX on admin.post (is_public) where (is_public = True);
 create unique index on admin.post (id);
 create index on admin.post (title);
 create index on admin.post (body);
