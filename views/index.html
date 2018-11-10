@@ -72,7 +72,21 @@
 
 <!-- Start header section -->
 <header id="header">
+  <div class="offer" style="background: #111;opacity: 0.8;position: absolute;top: 0px;z-index: 9999;padding: 0.5em;">
+    <div class="row">
+      <div class="col-xs-11" style="padding: 2%">
+        <p class="text-primary" style="color: white; float: left">Τα Φροντιστήρια Ορόσημο στο Ίλιον πιστεύουν ότι η επιτυχία προετοιμάζεται σωστά από την Α΄ Λυκείου και γι΄ αυτό κάνουν για 20 μέρες <b>προσφορά στα δίδακτρα της Α΄ Λυκείου κατά 30%.</b></p>
 
+      </div>
+      <div class="col-xs-1">
+        <a style="color: white;float: right;
+    margin: 10px;
+    font-size: 1.9em;" class="remove"><i style="
+    " class="fa fa-close"></i></a>
+      </div>
+    </div>
+
+  </div>
   <div class="header-inner">
     {% if not mobile %}
     <!-- test video -->
@@ -983,6 +997,12 @@
 <script type="text/javascript" src="/static/app/js/dist/libs/custom.js"></script>
 <script>
     $(document).ready(function(){
+        $('.remove').click(function (event) {
+            $('.offer').hide(200)
+        });
+
+        console.log('ENEVNTS MOUNTED');
+
         $('.my-background-video').bgVideo({
             fullScreen: true
         });
@@ -1046,7 +1066,14 @@
             }
         });
         $('[data-toggle="tooltip"]').tooltip();
-    })
+
+
+    });
+</script>
+<script>
+    $(document).ready(function () {
+
+    });
 </script>
 </body>
 </html>
