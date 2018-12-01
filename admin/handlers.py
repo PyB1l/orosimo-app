@@ -7,7 +7,8 @@ server_secret = '@^$^&#^QWERTY'
 
 
 def authenticate(username, password):
-    return username == 'oroshmo_admin' and password == 'iverson@87'
+    return (username == 'oroshmo_admin' and password == 'iverson@87') or \
+           (username == 'christina' and password == 'K3rb3r0$')
 
 
 def logout():
