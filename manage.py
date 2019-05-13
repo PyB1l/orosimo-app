@@ -82,9 +82,9 @@ def run(host, port, server, reloader, debug):
 
     bottle.run(
         app=app.wsgi,
-        server=server,
+        server=server,  # 'gunicorn
         host=host,
-        port=port ,
+        port=port,  # 9999
         reloader=reloader
     )
 
